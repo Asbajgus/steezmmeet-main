@@ -195,11 +195,16 @@ body {
     height: 30px;
     border: none;
     border-radius: 50%;
-    background: red;
+    /* background: red; */
     color: white;
     font-weight: bold;
     cursor: pointer;
 }
+
+.delete-button:hover {
+    background: red !important;
+}
+
 .edit-button {
     margin-top: 20px;
     padding: 10px 15px;
