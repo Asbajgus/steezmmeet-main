@@ -10,121 +10,128 @@
 </body>
 </head>
 <body>
-    <body>
-        <div class="header">
-            <div class="logo">
-                <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
+    <div class="header">
+        <div class="logo">
+            <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-buttons center">
+            <button>Dashboard</button>
+            <button>Galleri</button>
+            <button>Chat</button>
+            <button onclick="navigateToDashboard()">Dashboard</button>
+            <button onclick="navigateToGalleri()">Galleri</button>
+            <button onclick="navigateToChat()">Chat</button>
+        </div>
+        <div class="nav-buttons right">
+            <button id="authButton" onclick="handleAuth()">Log In</button>
+        </div>
+        <div class="nav-buttons mobile" id="mobileMenu">
+            <button>Dashboard</button>
+            <button>Galleri</button>
+            <button>Chat</button>
+            <button onclick="navigateToDashboard()">Dashboard</button>
+            <button onclick="navigateToGalleri()">Galleri</button>
+            <button onclick="navigateToChat()">Chat</button>
+            <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
+        </div>
+    </div>
+    <div id="welcomeContainer">
+        <h1>Welcome to Steez Meet</h1>
+        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
+        
+    </div>
+    <div id="loginContainer" style="display: none;">
+        <h2>Log In</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+    <div id="contentContainer" style="display: none;">
+        <h1>Welcome to the Dashboard</h1>
+        <p>This is the content visible after logging in.</p>
+        <h1>Dashboard</h1>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Mine events</h3>
+                <p>Hafjell meet</p>
+                <button>Ny Event</button>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="card">
+                <h3>Liste over events</h3>
+                <p>Hafjell meet</p>
+                <button>Se alle events</button>
             </div>
-            <div class="nav-buttons center">
-                <button onclick="navigateToDashboard()">Dashboard</button>
-                <button onclick="navigateToGalleri()">Galleri</button>
-                <button onclick="navigateToChat()">Chat</button>
+            <div class="card">
+                <h3>Min statistikk</h3>
+                <div class="stats">
+                    <div>25 D</div>
+                    <div>92 T</div>
+                </div>
+                <button>Se diagram</button>
             </div>
-            <div class="nav-buttons right">
-                <button id="authButton" onclick="handleAuth()">Log In</button>
-            </div>
-            <div class="nav-buttons mobile" id="mobileMenu">
-                <button onclick="navigateToDashboard()">Dashboard</button>
-                <button onclick="navigateToGalleri()">Galleri</button>
-                <button onclick="navigateToChat()">Chat</button>
-                <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
+            <div class="card">
+                <h3>Mine venner</h3>
+                <div class="friends">
+                    <button>Pål</button>
+                    <button>Stig</button>
+                </div>
+                <button>Se alle venner</button>
             </div>
         </div>
-        <div id="welcomeContainer">
-            <h1>Welcome to Steez Meet</h1>
-            <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
-            
-        </div>
-        <div id="loginContainer" style="display: none;">
-            <h2>Log In</h2>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Log In</button>
-            </form>
-        </div>
-        <div id="contentContainer" style="display: none;">
-            <h1>Dashboard</h1>
-            <div class="dashboard">
-                <div class="card">
-                    <h3>Mine events</h3>
-                    <p>Hafjell meet</p>
-                    <button>Ny Event</button>
-                </div>
-                <div class="card">
-                    <h3>Liste over events</h3>
-                    <p>Hafjell meet</p>
-                    <button>Se alle events</button>
-                </div>
-                <div class="card">
-                    <h3>Min statistikk</h3>
-                    <div class="stats">
-                        <div>25 D</div>
-                        <div>92 T</div>
-                    </div>
-                    <button>Se diagram</button>
-                </div>
-                <div class="card">
-                    <h3>Mine venner</h3>
-                    <div class="friends">
-                        <button>Pål</button>
-                        <button>Stig</button>
-                    </div>
-                    <button>Se alle venner</button>
-                </div>
+    </div>
+    <div id="galleriContainer" style="display: none;">
+        <h1>Galleri</h1>
+        <div class="galleri">
+            <div class="galleri-card">
+                <h3>Triks jeg prøver meg på</h3>
+                <img src="img/sample1.jpg" alt="Sample 1">
+                <button onclick="viewImage('Triks jeg prøver meg på')">Play</button>
+                <button>Description</button>
+            </div>
+            <div class="galleri-card">
+                <h3>Triks jeg skal prøve meg på</h3>
+                <img src="img/sample2.jpg" alt="Sample 2">
+                <button onclick="viewImage('Triks jeg skal prøve meg på')">Play</button>
+                <button>Description</button>
+            </div>
+            <div class="galleri-card">
+                <h3>Bilde 1</h3>
+                <img src="img/sample3.jpg" alt="Sample 3">
+                <button onclick="viewImage('Bilde 1')">Show</button>
+                <button>Description</button>
             </div>
         </div>
-        <div id="galleriContainer" style="display: none;">
-            <h1>Galleri</h1>
-            <div class="galleri">
-                <div class="galleri-card">
-                    <h3>Triks jeg prøver meg på</h3>
-                    <img src="img/sample1.jpg" alt="Sample 1">
-                    <button onclick="viewImage('Triks jeg prøver meg på')">Play</button>
-                    <button>Description</button>
-                </div>
-                <div class="galleri-card">
-                    <h3>Triks jeg skal prøve meg på</h3>
-                    <img src="img/sample2.jpg" alt="Sample 2">
-                    <button onclick="viewImage('Triks jeg skal prøve meg på')">Play</button>
-                    <button>Description</button>
-                </div>
-                <div class="galleri-card">
-                    <h3>Bilde 1</h3>
-                    <img src="img/sample3.jpg" alt="Sample 3">
-                    <button onclick="viewImage('Bilde 1')">Show</button>
-                    <button>Description</button>
-                </div>
+        <button onclick="navigateToDashboard()">Back to Dashboard</button>
+    </div>
+    <div id="galleriItemContainer" style="display: none;">
+        <div class="galleri-item">
+            <button class="delete-button" onclick="deleteGalleriItem()">X</button>
+            <div id="galleriItemContent">
+                <!-- Content (image or video) will be dynamically rendered here -->
             </div>
-            <button onclick="navigateToDashboard()">Back to Dashboard</button>
+            <button class="edit-button" onclick="editGalleriItem()">Edit</button>
+            <button onclick="backToGalleri()">Back to Galleri</button>
         </div>
-        <div id="galleriItemContainer" style="display: none;">
-            <div class="galleri-item">
-                <button class="delete-button" onclick="deleteGalleriItem()">X</button>
-                <div id="galleriItemContent">
-                    <!-- Content (image or video) will be dynamically rendered here -->
-                </div>
-                <button class="edit-button" onclick="editGalleriItem()">Edit</button>
-                <button onclick="backToGalleri()">Back to Galleri</button>
-            </div>
+    </div>
+    <div id="chatContainer" style="display: none;">
+        <h1>Chat</h1>
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will be dynamically rendered here -->
         </div>
-        <div id="chatContainer" style="display: none;">
-            <h1>Chat</h1>
-            <div class="chat-box" id="chatBox">
-                <!-- Messages will be dynamically rendered here -->
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chatMessageInput" placeholder="Type your message..." />
-                <button onclick="sendMessage()">Send</button>
-            </div>
-            <button onclick="backToDashboard()">Back to Dashboard</button>
+        <div class="chat-input">
+            <input type="text" id="chatMessageInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
         </div>
-        <script>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
+    <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
@@ -253,6 +260,6 @@
             document.getElementById('chatContainer').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'block';
         }
-        </script>
+    </script>
+    <script src="app.js"></script>
 </body>
-</html>

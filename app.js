@@ -3,6 +3,11 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
 
     const username = document.getElementById('username').value;
 
+    // Display a personalized welcome message
+    document.getElementById('contentContainer').innerHTML = `
+        <h1>Welcome, ${username}!</h1>
+        <p>This is your dashboard. Enjoy your stay!</p>
+    `;
     // Update the personalized welcome message in the dashboard
     const dashboardHeader = document.querySelector('#contentContainer h1');
     dashboardHeader.innerText = `Welcome, ${username}!`;
