@@ -20,13 +20,27 @@ body {
             border-bottom: 2px solid #87c9e8;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
+            height: 60px; /* Set consistent height */
         }
         .logo {
             position: absolute;
             left: 20px;
         }
         .logo img {
-            height: 50px;
+            height: 50px; /* Adjust logo height to fit header */
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px; /* Hamburger remains on the right */
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #005f87;
         }
         .nav-buttons {
             display: flex;
@@ -40,6 +54,22 @@ body {
         }
         .nav-buttons.right {
             margin-right: 20px; /* Ensure right alignment for Log In button */
+        }
+        .nav-buttons.mobile {
+            display: none; /* Initially hide the mobile menu */
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 20px; /* Adjust menu to appear on the left */
+            background: white;
+            border: 1px solid #87c9e8;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+        .nav-buttons.mobile button {
+            width: 100%;
+            margin: 5px 0;
         }
         .nav-buttons button {
             padding: 10px 15px;
@@ -60,6 +90,17 @@ body {
         .nav-buttons button:hover {
             background: #cceeff;
         }
+        @media (max-width: 768px) {
+            .nav-buttons.center, .nav-buttons.right {
+                display: none; /* Hide desktop navigation */
+            }
+            .hamburger {
+                display: flex; /* Show hamburger on mobile */
+            }
+            .header {
+                height: 60px; /* Ensure consistent height in mobile view */
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,14 +108,68 @@ body {
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
         </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div class="nav-buttons center">
             <button>Dashboard</button>
             <button>Galleri</button>
             <button>Chat</button>
         </div>
         <div class="nav-buttons right">
-            <button>Log In</button>
+            <button id="authButton" onclick="handleAuth()">Log In</button>
+        </div>
+        <div class="nav-buttons mobile" id="mobileMenu">
+            <button>Dashboard</button>
+            <button>Galleri</button>
+            <button>Chat</button>
+            <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
+    <div id="welcomeContainer">
+        <h1>Welcome to Steez Meet</h1>
+        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
+        
+    </div>
+    <div id="loginContainer" style="display: none;">
+        <h2>Log In</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+    <div id="contentContainer" style="display: none;">
+        <h1>Welcome to the Dashboard</h1>
+        <p>This is the content visible after logging in.</p>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function showLoginForm() {
+            document.getElementById('welcomeContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+
+        function handleAuth() {
+            const isLoggedIn = document.getElementById('authButton').innerText === 'Log Out';
+            if (isLoggedIn) {
+                // Log out logic
+                document.getElementById('contentContainer').style.display = 'none';
+                document.getElementById('welcomeContainer').style.display = 'block';
+                document.getElementById('authButton').innerText = 'Log In';
+                document.getElementById('authButtonMobile').innerText = 'Log In';
+            } else {
+                // Show login form
+                showLoginForm();
+            }
+        }
+    </script>
+    <script src="app.js"></script>
 </body>
 </html>
