@@ -101,6 +101,165 @@ body {
                 height: 60px; /* Ensure consistent height in mobile view */
             }
         }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #87c9e8;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+        .card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: 1px solid #005f87;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #005f87;
+        }
+        .card button:hover {
+            background: #cceeff;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+        .stats div {
+            border: 1px solid #87c9e8;
+            border-radius: 50%;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .friends button {
+            margin: 5px;
+        }
+        .galleri {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .galleri-card {
+            border: 1px solid #87c9e8;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .galleri-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .galleri-card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: 1px solid #005f87;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #005f87;
+        }
+        .galleri-card button:hover {
+            background: #cceeff;
+        }
+        .galleri-item {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #87c9e8;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background: white;
+        }
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background: red;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .edit-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: 1px solid #005f87;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #005f87;
+        }
+        .edit-button:hover {
+            background: #cceeff;
+        }
+        .chat-box {
+            border: 1px solid #87c9e8;
+            border-radius: 10px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #e6f7ff;
+            max-width: 80%;
+        }
+        .chat-message.user {
+            background: #d9fdd3;
+            align-self: flex-end;
+        }
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #87c9e8;
+            border-radius: 5px;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            border: 1px solid #005f87;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #005f87;
+        }
+        .chat-input button:hover {
+            background: #cceeff;
+        }
     </style>
 </head>
 <body>
@@ -114,17 +273,17 @@ body {
             <div></div>
         </div>
         <div class="nav-buttons center">
-            <button>Dashboard</button>
-            <button>Galleri</button>
-            <button>Chat</button>
+            <button onclick="navigateToDashboard()">Dashboard</button>
+            <button onclick="navigateToGalleri()">Galleri</button>
+            <button onclick="navigateToChat()">Chat</button>
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
         </div>
         <div class="nav-buttons mobile" id="mobileMenu">
-            <button>Dashboard</button>
-            <button>Galleri</button>
-            <button>Chat</button>
+            <button onclick="navigateToDashboard()">Dashboard</button>
+            <button onclick="navigateToGalleri()">Galleri</button>
+            <button onclick="navigateToChat()">Chat</button>
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
@@ -142,8 +301,80 @@ body {
         </form>
     </div>
     <div id="contentContainer" style="display: none;">
-        <h1>Welcome to the Dashboard</h1>
-        <p>This is the content visible after logging in.</p>
+        <h1>Dashboard</h1>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Mine events</h3>
+                <p>Hafjell meet</p>
+                <button>Ny Event</button>
+            </div>
+            <div class="card">
+                <h3>Liste over events</h3>
+                <p>Hafjell meet</p>
+                <button>Se alle events</button>
+            </div>
+            <div class="card">
+                <h3>Min statistikk</h3>
+                <div class="stats">
+                    <div>25 D</div>
+                    <div>92 T</div>
+                </div>
+                <button>Se diagram</button>
+            </div>
+            <div class="card">
+                <h3>Mine venner</h3>
+                <div class="friends">
+                    <button>Pål</button>
+                    <button>Stig</button>
+                </div>
+                <button>Se alle venner</button>
+            </div>
+        </div>
+    </div>
+    <div id="galleriContainer" style="display: none;">
+        <h1>Galleri</h1>
+        <div class="galleri">
+            <div class="galleri-card">
+                <h3>Triks jeg prøver meg på</h3>
+                <img src="img/sample1.jpg" alt="Sample 1">
+                <button onclick="viewImage('Triks jeg prøver meg på')">Play</button>
+                <button>Description</button>
+            </div>
+            <div class="galleri-card">
+                <h3>Triks jeg skal prøve meg på</h3>
+                <img src="img/sample2.jpg" alt="Sample 2">
+                <button onclick="viewImage('Triks jeg skal prøve meg på')">Play</button>
+                <button>Description</button>
+            </div>
+            <div class="galleri-card">
+                <h3>Bilde 1</h3>
+                <img src="img/sample3.jpg" alt="Sample 3">
+                <button onclick="viewImage('Bilde 1')">Show</button>
+                <button>Description</button>
+            </div>
+        </div>
+        <button onclick="navigateToDashboard()">Back to Dashboard</button>
+    </div>
+    <div id="galleriItemContainer" style="display: none;">
+        <div class="galleri-item">
+            <button class="delete-button" onclick="deleteGalleriItem()">X</button>
+            <div id="galleriItemContent">
+                <!-- Content (image or video) will be dynamically rendered here -->
+            </div>
+            <button class="edit-button" onclick="editGalleriItem()">Edit</button>
+            <button onclick="backToGalleri()">Back to Galleri</button>
+        </div>
+    </div>
+    <div id="chatContainer" style="display: none;">
+        <h1>Chat</h1>
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will be dynamically rendered here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatMessageInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
     <script>
         function toggleMenu() {
@@ -168,6 +399,111 @@ body {
                 // Show login form
                 showLoginForm();
             }
+        }
+
+        function navigateToDashboard() {
+            document.getElementById('galleriContainer').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'block';
+        }
+
+        function navigateToGalleri() {
+            document.getElementById('contentContainer').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('galleriContainer').style.display = 'block';
+        }
+
+        function navigateToChat() {
+            document.getElementById('contentContainer').style.display = 'none';
+            document.getElementById('galleriContainer').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'block';
+            renderChat(); // Render chat messages
+        }
+
+        function viewImage(title) {
+            alert(`Viewing image: ${title}`);
+        }
+
+        let selectedGalleriItem = null;
+
+        function viewGalleriItem(item) {
+            selectedGalleriItem = item;
+            const content = document.getElementById("galleriItemContent");
+            content.innerHTML = ""; // Clear existing content
+
+            if (item.type === "image") {
+                const img = document.createElement("img");
+                img.src = item.src;
+                img.alt = item.title;
+                img.style.maxWidth = "100%";
+                content.appendChild(img);
+            } else if (item.type === "video") {
+                const video = document.createElement("video");
+                video.src = item.src;
+                video.controls = true;
+                video.style.maxWidth = "100%";
+                content.appendChild(video);
+            }
+
+            document.getElementById("galleriContainer").style.display = "none";
+            document.getElementById("galleriItemContainer").style.display = "block";
+        }
+
+        function deleteGalleriItem() {
+            if (selectedGalleriItem) {
+                const index = galleriModel.findIndex(item => item.title === selectedGalleriItem.title);
+                if (index > -1) {
+                    galleriModel.splice(index, 1);
+                    backToGalleri();
+                }
+            }
+        }
+
+        function editGalleriItem() {
+            alert("Edit functionality is not implemented yet.");
+        }
+
+        function backToGalleri() {
+            document.getElementById("galleriItemContainer").style.display = "none";
+            document.getElementById("galleriContainer").style.display = "block";
+            renderGalleri(); // Re-render the gallery after deletion
+        }
+
+        const chatModel = [
+            { sender: "user", message: "Hi there!" },
+            { sender: "bot", message: "Hello! How can I help you today?" },
+        ];
+
+        function renderChat() {
+            const chatBox = document.getElementById("chatBox");
+            chatBox.innerHTML = ""; // Clear existing messages
+
+            chatModel.forEach(msg => {
+                const messageDiv = document.createElement("div");
+                messageDiv.className = `chat-message ${msg.sender}`;
+                messageDiv.innerText = msg.message;
+                chatBox.appendChild(messageDiv);
+            });
+
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("chatMessageInput");
+            const message = input.value.trim();
+            if (message) {
+                chatModel.push({ sender: "user", message });
+                chatModel.push({ sender: "bot", message: "Got it! Let me assist you." }); // Simulate bot response
+                input.value = "";
+                renderChat();
+            }
+        }
+
+        function backToDashboard() {
+            document.getElementById('galleriContainer').style.display = 'none';
+            document.getElementById('galleriItemContainer').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'block';
         }
     </script>
     <script src="app.js"></script>
