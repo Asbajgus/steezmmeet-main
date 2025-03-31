@@ -4,7 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #a3d9ff, #ffffff);
+            padding: 10px 20px;
+            border-bottom: 2px solid #87c9e8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            left: 20px;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 15px;
+            border: 1px solid #005f87;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #005f87;
+            font-size: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 120px;
+        }
+        .nav-buttons button:hover {
+            background: #cceeff;
+        }
+    </style>
 </head>
 <body>
     dy>
@@ -12,46 +59,12 @@
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
         </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="nav-buttons center">
+        <div class="nav-buttons">
             <button>Dashboard</button>
             <button>Galleri</button>
             <button>Chat</button>
-        </div>
-        <div class="nav-buttons right">
-            <button id="authButton" onclick="handleAuth()">Log In</button>
-        </div>
-        <div class="nav-buttons mobile" id="mobileMenu">
-            <button>Dashboard</button>
-            <button>Galleri</button>
-            <button>Chat</button>
-            <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
+            <button>Log In</button>
         </div>
     </div>
-    <div id="welcomeContainer">
-        <h1>Welcome to Steez Meet</h1>
-        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
-        
-    </div>
-    <div id="loginContainer" style="display: none;">
-        <h2>Log In</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
-        </form>
-    </div>
-    <div id="contentContainer" style="display: none;">
-        <h1>Welcome to the Dashboard</h1>
-        <p>This is the content visible after logging in.</p>
-    </div>
-
-    <script src="model.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
 </body>
 </html>
