@@ -39,9 +39,14 @@ function renderGalleri() {
     const galleriContent = document.getElementById("galleriContent");
     galleriContent.innerHTML = ""; // Clear existing content
 
-    galleriModel.forEach(item => {
+    galleriModel.forEach((item, index) => {
         const card = document.createElement("div");
         card.className = "galleri-card";
+
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "X"; // Ensure the button has the correct text
+        deleteButton.className = "delete-button"; // Ensure the button has the correct class
+        deleteButton.onclick = () => deleteGalleriItem(index); // Pass the index to delete the item
 
         const title = document.createElement("h3");
         title.innerText = item.title;
@@ -51,15 +56,44 @@ function renderGalleri() {
         img.alt = item.title;
 
         const viewButton = document.createElement("button");
-        viewButton.innerText = "View";
-        viewButton.onclick = () => viewGalleriItem(item); // Correctly bind the item
+        viewButton.innerText = item.type === "image" ? "View Image" : "Play Video";
+        viewButton.onclick = () => viewGalleriItem(item);
 
+        card.appendChild(deleteButton);
         card.appendChild(title);
         card.appendChild(img);
         card.appendChild(viewButton);
 
         galleriContent.appendChild(card);
     });
+}
+
+function deleteGalleriItem(index) {
+    galleriModel.splice(index, 1); // Remove the item from the model
+    renderGalleri(); // Re-render the gallery
+}
+
+function addGalleriItem(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const fileType = file.type.startsWith("image/") ? "image" : file.type.startsWith("video/") ? "video" : null;
+    if (!fileType) {
+        alert("Only images and videos are allowed.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const newItem = {
+            title: file.name,
+            type: fileType,
+            src: e.target.result,
+        };
+        galleriModel.push(newItem); // Add the new item to the model
+        renderGalleri(); // Re-render the gallery
+    };
+    reader.readAsDataURL(file); // Read the file as a data URL
 }
 
 function navigateToDashboard() {
@@ -78,6 +112,8 @@ function navigateToGalleri() {
     document.getElementById('loginContainer').style.display = 'none';
     document.getElementById('welcomeContainer').style.display = 'none';
     document.getElementById('galleriContainer').style.display = 'block';
+
+    renderGalleri(); // Render gallery items dynamically
 }
 
 function navigateToChat() {

@@ -82,31 +82,18 @@
     </div>
     <div id="galleriContainer" style="display: none;">
         <h1>Galleri</h1>
-        <div class="galleri">
-            <div class="galleri-card">
-                <h3>Triks jeg prøver meg på</h3>
-                <img src="img/sample1.jpg" alt="Sample 1">
-                <button onclick="viewImage('Triks jeg prøver meg på')">Play</button>
-                <button>Description</button>
-            </div>
-            <div class="galleri-card">
-                <h3>Triks jeg skal prøve meg på</h3>
-                <img src="img/sample2.jpg" alt="Sample 2">
-                <button onclick="viewImage('Triks jeg skal prøve meg på')">Play</button>
-                <button>Description</button>
-            </div>
-            <div class="galleri-card">
-                <h3>Bilde 1</h3>
-                <img src="img/sample3.jpg" alt="Sample 3">
-                <button onclick="viewImage('Bilde 1')">Show</button>
-                <button>Description</button>
-            </div>
+        <div class="galleri" id="galleriContent">
+            <!-- Gallery items will be dynamically rendered here -->
+        </div>
+        <div class="add-item">
+            <label for="fileInput" class="add-item-button">+</label>
+            <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;" onchange="addGalleriItem(event)">
         </div>
         <button onclick="navigateToDashboard()">Back to Dashboard</button>
     </div>
     <div id="galleriItemContainer" style="display: none;">
         <div class="galleri-item">
-            <button class="delete-button" onclick="deleteGalleriItem()">X</button>
+            
             <div id="galleriItemContent">
                 <!-- Content (image or video) will be dynamically rendered here -->
             </div>
@@ -125,6 +112,63 @@
         </div>
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
+    <style>
+        .add-item {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .add-item-button {
+            display: inline-block;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            background-color: #005f87;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .add-item-button:hover {
+            background-color: #007bb5;
+        }
+
+        .galleri-card {
+            position: relative;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .delete-button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+    </style>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
