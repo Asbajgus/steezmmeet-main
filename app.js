@@ -62,10 +62,31 @@ function renderGalleri() {
     });
 }
 
+function navigateToDashboard() {
+    document.getElementById('galleriContainer').style.display = 'none';
+    document.getElementById('galleriItemContainer').style.display = 'none';
+    document.getElementById('chatContainer').style.display = 'none';
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('welcomeContainer').style.display = 'none';
+    document.getElementById('contentContainer').style.display = 'block';
+}
+
+function navigateToGalleri() {
+    document.getElementById('contentContainer').style.display = 'none';
+    document.getElementById('galleriItemContainer').style.display = 'none';
+    document.getElementById('chatContainer').style.display = 'none';
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('welcomeContainer').style.display = 'none';
+    document.getElementById('galleriContainer').style.display = 'block';
+}
+
 function navigateToChat() {
-    document.getElementById("contentContainer").style.display = "none";
-    document.getElementById("chatContainer").style.display = "block";
-    renderChat(); // Render chat messages
+    document.getElementById('contentContainer').style.display = 'none';
+    document.getElementById('galleriContainer').style.display = 'none';
+    document.getElementById('galleriItemContainer').style.display = 'none';
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('welcomeContainer').style.display = 'none';
+    document.getElementById('chatContainer').style.display = 'block';
 }
 
 function backToDashboard() {
