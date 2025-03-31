@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    dy>
     <div class="header">
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
@@ -22,14 +23,31 @@
             <button>Chat</button>
         </div>
         <div class="nav-buttons right">
-            <button>Log In</button>
+            <button id="authButton" onclick="handleAuth()">Log In</button>
         </div>
         <div class="nav-buttons mobile" id="mobileMenu">
             <button>Dashboard</button>
             <button>Galleri</button>
             <button>Chat</button>
-            <button>Log In</button>
+            <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
+    </div>
+    <div id="welcomeContainer">
+        <h1>Welcome to Steez Meet</h1>
+        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
+        
+    </div>
+    <div id="loginContainer" style="display: none;">
+        <h2>Log In</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+    <div id="contentContainer" style="display: none;">
+        <h1>Welcome to the Dashboard</h1>
+        <p>This is the content visible after logging in.</p>
     </div>
 
     <script src="model.js"></script>
