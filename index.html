@@ -14,7 +14,7 @@ body {
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between; /* Adjust layout to space elements */
             background: linear-gradient(to right, #a3d9ff, #ffffff);
             padding: 10px 20px;
             border-bottom: 2px solid #87c9e8;
@@ -31,6 +31,15 @@ body {
         .nav-buttons {
             display: flex;
             gap: 10px;
+        }
+        .nav-buttons.center {
+            flex-grow: 1; /* Allow center buttons to take up remaining space */
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            gap: 10px;
+        }
+        .nav-buttons.right {
+            margin-right: 20px; /* Ensure right alignment for Log In button */
         }
         .nav-buttons button {
             padding: 10px 15px;
@@ -58,10 +67,12 @@ body {
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
         </div>
-        <div class="nav-buttons">
+        <div class="nav-buttons center">
             <button>Dashboard</button>
             <button>Galleri</button>
             <button>Chat</button>
+        </div>
+        <div class="nav-buttons right">
             <button>Log In</button>
         </div>
     </div>
