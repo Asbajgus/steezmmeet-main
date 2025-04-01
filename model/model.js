@@ -142,6 +142,23 @@ const model = {
         attandees: [1, 2, 3],
       }
     ],
+    gallery: [ 
+      {
+        title: "Triks jeg prøver meg på",
+        type: "video",
+        src: "videos/sample1.mp4",
+      },
+      {
+        title: "Triks jeg skal prøve meg på",
+        type: "image",
+        src: "img/sample2.jpg",
+      },
+      {
+        title: "Bilde 1",
+        type: "image",
+        src: "img/sample3.jpg",
+      }
+    ],
     about: {
       title: 'About',
       content: 'Den mest chille veien for å planlegge shreds med gjengen!'
