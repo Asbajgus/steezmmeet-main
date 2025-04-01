@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="model/model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
 </head>
 <body>
 </body>
@@ -37,7 +39,7 @@
     </div>
     <div id="welcomeContainer">
         <h1>Welcome to Steez Meet</h1>
-        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
+        <p></p>
         
     </div>
     <div id="loginContainer" style="display: none;">
@@ -115,29 +117,7 @@
     </div>
     
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function showLoginForm() {
-            document.getElementById('welcomeContainer').style.display = 'none';
-            document.getElementById('loginContainer').style.display = 'block';
-        }
-
-        function handleAuth() {
-            const isLoggedIn = document.getElementById('authButton').innerText === 'Log Out';
-            if (isLoggedIn) {
-                // Log out logic
-                document.getElementById('contentContainer').style.display = 'none';
-                document.getElementById('welcomeContainer').style.display = 'block';
-                document.getElementById('authButton').innerText = 'Log In';
-                document.getElementById('authButtonMobile').innerText = 'Log In';
-            } else {
-                // Show login form
-                showLoginForm();
-            }
-        }
+        
 
         function navigateToDashboard() {
             document.getElementById('galleriContainer').style.display = 'none';
@@ -162,10 +142,10 @@
             alert(`Viewing image: ${title}`);
         }
 
-        let selectedGalleriItem = null;
+        
 
         function viewGalleriItem(item) {
-            selectedGalleriItem = item;
+            let selectedGalleriItem = item;
             const content = document.getElementById("galleriItemContent");
             content.innerHTML = ""; // Clear existing content
 
