@@ -17,29 +17,12 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     document.getElementById('authButtonMobile').innerText = 'Log Out';
 });
 
-const galleriModel = [
-    {
-        title: "Triks jeg prøver meg på",
-        type: "video",
-        src: "videos/sample1.mp4",
-    },
-    {
-        title: "Triks jeg skal prøve meg på",
-        type: "image",
-        src: "img/sample2.jpg",
-    },
-    {
-        title: "Bilde 1",
-        type: "image",
-        src: "img/sample3.jpg",
-    }
-];
 
 function renderGalleri() {
     const galleriContent = document.getElementById("galleriContent");
     galleriContent.innerHTML = ""; // Clear existing content
 
-    galleriModel.forEach((item, index) => {
+    model.data.gallery.forEach((item, index) => {
         const card = document.createElement("div");
         card.className = "galleri-card";
 
@@ -69,7 +52,7 @@ function renderGalleri() {
 }
 
 function deleteGalleriItem(index) {
-    galleriModel.splice(index, 1); // Remove the item from the model
+    model.data.gallery.splice(index, 1); // Remove the item from the model
     renderGalleri(); // Re-render the gallery
 }
 
@@ -90,7 +73,7 @@ function addGalleriItem(event) {
             type: fileType,
             src: e.target.result,
         };
-        galleriModel.push(newItem); // Add the new item to the model
+        model.data.gallery.push(newItem); // Add the new item to the model
         renderGalleri(); // Re-render the gallery
     };
     reader.readAsDataURL(file); // Read the file as a data URL

@@ -37,12 +37,10 @@ const model = {
       extraInfo: '',
       attendees: [],
     },
-    editmode: {
-      galleryPage: {
-        title: '',
-        link: '',
-        description: '',
-      },
+    galleryPage: {
+      title: '',
+      src: '',
+      type: '', 
     },
   },
   data: {
