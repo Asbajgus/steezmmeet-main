@@ -1,11 +1,41 @@
-document.getElementById('loginForm').addEventListener('submit', function (event) {
+document.getElementById('loginForm').onsubmit = function (event) {
     event.preventDefault(); // Prevent form submission
 
     const username = document.getElementById('username').value;
 
     // Update the personalized welcome message in the dashboard
-    const dashboardHeader = document.querySelector('#contentContainer h1');
-    dashboardHeader.innerText = `Welcome, ${username}!`;
+    document.getElementById('contentContainer').innerHTML = `
+        <h1>Welcome, ${username}!</h1>
+        <p>This is your dashboard. Enjoy your stay!</p>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Mine events</h3>
+                <p>Hafjell meet</p>
+                <button>Ny Event</button>
+            </div>
+            <div class="card">
+                <h3>Liste over events</h3>
+                <p>Hafjell meet</p>
+                <button>Se alle events</button>
+            </div>
+            <div class="card">
+                <h3>Min statistikk</h3>
+                <div class="stats">
+                    <div>25 D</div>
+                    <div>92 T</div>
+                </div>
+                <button>Se diagram</button>
+            </div>
+            <div class="card">
+                <h3>Mine venner</h3>
+                <div class="friends">
+                    <button>Pål</button>
+                    <button>Stig</button>
+                </div>
+                <button>Se alle venner</button>
+            </div>
+        </div>
+    `;
 
     // Hide the login form and show the dashboard
     document.getElementById('loginContainer').style.display = 'none';
@@ -15,40 +45,26 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     // Update the "Log In" button to "Log Out"
     document.getElementById('authButton').innerText = 'Log Out';
     document.getElementById('authButtonMobile').innerText = 'Log Out';
-});
-
+};
 
 function renderGalleri() {
     const galleriContent = document.getElementById("galleriContent");
     galleriContent.innerHTML = ""; // Clear existing content
 
+    let galleriHTML = "";
     model.data.gallery.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.className = "galleri-card";
-
-        const deleteButton = document.createElement("button");
-        deleteButton.innerText = "X"; // Ensure the button has the correct text
-        deleteButton.className = "delete-button"; // Ensure the button has the correct class
-        deleteButton.onclick = () => deleteGalleriItem(index); // Pass the index to delete the item
-
-        const title = document.createElement("h3");
-        title.innerText = item.title;
-
-        const img = document.createElement("img");
-        img.src = item.type === "image" ? item.src : "img/video-placeholder.jpg";
-        img.alt = item.title;
-
-        const viewButton = document.createElement("button");
-        viewButton.innerText = item.type === "image" ? "View Image" : "Play Video";
-        viewButton.onclick = () => viewGalleriItem(item);
-
-        card.appendChild(deleteButton);
-        card.appendChild(title);
-        card.appendChild(img);
-        card.appendChild(viewButton);
-
-        galleriContent.appendChild(card);
+        galleriHTML += `
+            <div class="galleri-card">
+                <button class="delete-button" onclick="deleteGalleriItem(${index})">X</button>
+                <h3>${item.title}</h3>
+                <img src="${item.type === "image" ? item.src : "img/video-placeholder.jpg"}" alt="${item.title}">
+                <button onclick="viewGalleriItem(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+                    ${item.type === "image" ? "View Image" : "Play Video"}
+                </button>
+            </div>
+        `;
     });
+    galleriContent.innerHTML = galleriHTML;
 }
 
 function deleteGalleriItem(index) {
