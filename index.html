@@ -6,8 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="model/model.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
 </head>
 <body>
 </body>
@@ -16,7 +14,6 @@
     <div class="header">
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
-            <p>"Shred it, steeze it, send it!"</p>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
@@ -24,23 +21,23 @@
             <div></div>
         </div>
         <div class="nav-buttons center">
-            <button onclick="navigateToDashboard()">Dashboard</button>
-            <button onclick="navigateToGalleri()">Galleri</button>
-            <button onclick="navigateToChat()">Chat</button>
+            <button onclick="navigateTo('dashboard')">Dashboard</button>
+            <button onclick="navigateTo('galleri')">Galleri</button>
+            <button onclick="navigateTo('chat')">Chat</button>
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
         </div>
         <div class="nav-buttons mobile" id="mobileMenu">
-            <button onclick="navigateToDashboard()">Dashboard</button>
-            <button onclick="navigateToGalleri()">Galleri</button>
-            <button onclick="navigateToChat()">Chat</button>
+            <button onclick="navigateTo('dashboard')">Dashboard</button>
+            <button onclick="navigateTo('galerii')">Galleri</button>
+            <button onclick="navigateTo('chat')">Chat</button>
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
     <div id="welcomeContainer">
-        <h1>Welcome to <span id="steezMeet">Steez Meet</span></h1>
-        <p>"Den mest <span id="chille">chille</span> veien å planlegge shreds med gjengen!"</p>
+        <h1>Welcome to Steez Meet</h1>
+        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
         
     </div>
     <div id="loginContainer" style="display: none;">
@@ -85,15 +82,14 @@
         </div>
     </div>
     <div id="galleriContainer" style="display: none;">
-        <h1>Galleri</h1> 
-         <div class="add-item">
+        <h1>Galleri</h1>
+        <div class="add-item top-right">
             <label for="fileInput" class="add-item-button">+</label>
             <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;" onchange="addGalleriItem(event)">
         </div>
         <div class="galleri" id="galleriContent">
             <!-- Gallery items will be dynamically rendered here -->
         </div>
-      
         <button onclick="navigateToDashboard()">Back to Dashboard</button>
     </div>
     <div id="galleriItemContainer" style="display: none;">
@@ -119,35 +115,92 @@
     </div>
     
     <script>
-        
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
 
-        function navigateToDashboard() {
-            document.getElementById('galleriContainer').style.display = 'none';
-            document.getElementById('chatContainer').style.display = 'none';
+        function showLoginForm() {
+            document.getElementById('welcomeContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        }
+
+        function handleAuth() {
+            const isLoggedIn = document.getElementById('authButton').innerText === 'Log Out';
+            if (isLoggedIn) {
+                // Log out logic
+                document.getElementById('contentContainer').style.display = 'none';
+                document.getElementById('welcomeContainer').style.display = 'block';
+                document.getElementById('authButton').innerText = 'Log In';
+                document.getElementById('authButtonMobile').innerText = 'Log In';
+            } else {
+                // Show login form
+                showLoginForm();
+            }
+        }
+
+        // function navigateToDashboard() {
+        //     document.getElementById('galleriContainer').style.display = 'none';
+        //     document.getElementById('chatContainer').style.display = 'none';
+        //     document.getElementById('contentContainer').style.display = 'block';
+        // }
+
+        // function navigateToGalleri() {
+        //     document.getElementById('contentContainer').style.display = 'none';
+        //     document.getElementById('chatContainer').style.display = 'none';
+        //     document.getElementById('galleriContainer').style.display = 'block';
+        // }
+
+        // function navigateToChat() {
+        //     document.getElementById('contentContainer').style.display = 'none';
+        //     document.getElementById('galleriContainer').style.display = 'none';
+        //     document.getElementById('chatContainer').style.display = 'block';
+        //     renderChat(); // Render chat messages
+        // }
+
+        function navigateTo(page) {
+    // Ukryj wszystkie sekcje
+    const sections = ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer'];
+    sections.forEach(section => {
+        document.getElementById(section).style.display = 'none';
+    });
+
+    // Pokaż odpowiednią sekcję na podstawie argumentu
+    switch (page) {
+        case 'welcome':
+            document.getElementById('welcomeContainer').style.display = 'block';
+            break;
+        case 'login':
+            document.getElementById('loginContainer').style.display = 'block';
+            break;
+        case 'dashboard':
             document.getElementById('contentContainer').style.display = 'block';
-        }
-
-        function navigateToGalleri() {
-            document.getElementById('contentContainer').style.display = 'none';
-            document.getElementById('chatContainer').style.display = 'none';
+            break;
+        case 'galleri':
             document.getElementById('galleriContainer').style.display = 'block';
-        }
-
-        function navigateToChat() {
-            document.getElementById('contentContainer').style.display = 'none';
-            document.getElementById('galleriContainer').style.display = 'none';
+            renderGalleri(); // Renderuj galerię, jeśli przechodzimy do galerii
+            break;
+        case 'chat':
             document.getElementById('chatContainer').style.display = 'block';
-            renderChat(); // Render chat messages
-        }
+            renderChat(); // Renderuj czat, jeśli przechodzimy do czatu
+            break;
+        case 'galleriItem':
+            document.getElementById('galleriItemContainer').style.display = 'block';
+            break;
+        default:
+            console.error(`Unknown page: ${page}`);
+    }
+}
+
 
         function viewImage(title) {
             alert(`Viewing image: ${title}`);
         }
 
-        
+        let selectedGalleriItem = null;
 
         function viewGalleriItem(item) {
-            let selectedGalleriItem = item;
+            selectedGalleriItem = item;
             const content = document.getElementById("galleriItemContent");
             content.innerHTML = ""; // Clear existing content
 
