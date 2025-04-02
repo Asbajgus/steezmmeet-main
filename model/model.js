@@ -44,9 +44,12 @@ const model = {
         id: 2,
         username: "user2",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         name: "User Two",
         aboutMe: "I love skiing!",
 =======
+=======
+>>>>>>> Stashed changes
         password: "pass2",
         name: "user2name",
         aboutMe: "jeg elsker ski",
