@@ -61,7 +61,7 @@ const model = {
             ]
           }
         ],
-        friendsID: [1, 3],
+        friendsID: [1, 3, 4],
         statistics: [
           {
             daysInSlope: 24,
@@ -90,11 +90,69 @@ const model = {
             ]
           }
         ],
-        friendsID: [2, 3],
+        friendsID: [2, 3, 4],
         statistics: [
           {
             daysInSlope: 10,
             hoursInSlope: 50,
+          },
+        ],
+      }, 
+      {
+        id: 3,
+        username: "user3",
+        name: "User Three",
+        aboutMe: "I love both skiing and snowboarding!",
+        favoriteSlopeID: [2],
+        favoriteLocationID: [4],
+        status: true,
+        chat: [
+          {
+            ToUserID: 1,
+            conversation: [
+              {
+                date: "11/12/11",
+                time: "15:08",
+                userID: 3,
+                message: "Hey!",
+              }
+            ]
+          }
+        ],
+        friendsID: [1, 2, 4],
+        statistics: [
+          {
+            daysInSlope: 5,
+            hoursInSlope: 20,
+          },
+        ],
+      }, 
+      {
+        id: 4,
+        username: "user4",
+        name: "michal",
+        aboutMe: "I love skiing!",
+        favoriteSlopeID: [1],
+        favoriteLocationID: [2],
+        status: false,
+        chat: [
+          {
+            ToUserID: 1,
+            conversation: [
+              {
+                date: "11/13/11",
+                time: "10:08",
+                userID: 4,
+                message: "Hello!",
+              }
+            ]
+          }
+        ],
+        friendsID: [1, 3],
+        statistics: [
+          {
+            daysInSlope: 24,
+            hoursInSlope: 70,
           },
         ],
       }
@@ -119,6 +177,15 @@ const model = {
         slope: "Red",
         extraInfo: "Snowboarding competition.",
         attendees: [1, 3],
+      }, {
+        id: 3,
+        creatorId: 1,
+        title: "Fall Festival",
+        date: "2025-08-15",
+        place: ["Fall"],
+        slope: "Red",
+        extraInfo: "Musikk festival.",
+        attendees: [1, 2,3],
       }
     ],
     gallery: [ 
