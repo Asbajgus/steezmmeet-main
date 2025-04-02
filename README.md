@@ -26,17 +26,17 @@ Whether you're hitting the slopes, skating the park, or just want to stay connec
 
 ## 📚 Table of Contents
 
-- [Navigation](#navigation)
-- [Authentication](#authentication)
-- [Profile](#profile)
-- [Dashboard](#dashboard)
-- [Statistics](#statistics)
-- [Event](#event)
-- [Friends](#friends)
-- [Gallery](#gallery)
-- [SteezChat](#steezchat)
-- [Structure](#structure)
-- [Credits](#credits)
+- [Navigation](#️-navigation)
+- [Authentication](#-authentication)
+- [Profile](#-profile)
+- [Dashboard](#-dashboard)
+- [Statistics](#-statistics)
+- [Event](#-event)
+- [Friends](#-friends)
+- [Gallery](#-gallery)
+- [SteezChat](#-steezchat)
+- [Structure](#-structure)
+- [Credits](#-credits)
 
 ---
 
