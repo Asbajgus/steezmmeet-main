@@ -43,8 +43,14 @@ const model = {
       {
         id: 2,
         username: "user2",
+<<<<<<< Updated upstream
         name: "User Two",
         aboutMe: "I love skiing!",
+=======
+        password: "pass2",
+        name: "user2name",
+        aboutMe: "jeg elsker ski",
+>>>>>>> Stashed changes
         favoriteSlopeID: [1],
         favoriteLocationID: [2],
         status: false,
@@ -72,8 +78,14 @@ const model = {
       {
         id: 1,
         username: "user1",
+<<<<<<< Updated upstream
         name: "User One",
         aboutMe: "I love snowboarding!",
+=======
+        name: "user1name",
+        password: "pass1",
+        aboutMe: "jeg elsker snowboard",
+>>>>>>> Stashed changes
         favoriteSlopeID: [3],
         favoriteLocationID: [5],
         status: true,
