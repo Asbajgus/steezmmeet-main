@@ -1,12 +1,6 @@
 const model = {
   app: {
     currentPage: 'home',
-    // pages: [
-    //   'logInPage', 'registerPage', 'profilePage', 'dashboardPage', 'chatPage',
-    //   'createEventPage', 'viewEventPage', 'viewAllEvents', 'galleryPage',
-    //   'imagePage', 'videoPage', 'statisticsPage', 'viewAllUsers',
-    //   'viewFriendsPage', 'adminPage', 'galleryAdminPage', 'vennListeAdmin'
-    // ]
     pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer']
   },
   inputs: {
@@ -49,8 +43,8 @@ const model = {
       {
         id: 2,
         username: "user2",
-        name: "user2name",
-        aboutMe: "jeg elsker ski",
+        name: "User Two",
+        aboutMe: "I love skiing!",
         favoriteSlopeID: [1],
         favoriteLocationID: [2],
         status: false,
@@ -62,36 +56,24 @@ const model = {
                 date: "11/11/11",
                 time: "10:08",
                 userID: 2,
-                message: "hei hei",
-              },
-              {
-                ToUserID: 3,
-                conversation: [
-                  {
-                    date: "11/11/11",
-                    time: "10:15",
-                    userID: 2,
-                    message: "Hei på deg",
-                  },
-                ]
+                message: "Hello!",
               }
             ]
           }
         ],
-        friendsID: [1, 3, 4],
+        friendsID: [1, 3],
         statistics: [
           {
             daysInSlope: 24,
             hoursInSlope: 70,
           },
-
         ],
       },
       {
         id: 1,
         username: "user1",
-        name: "user1name",
-        aboutMe: "jeg elsker snowboard",
+        name: "User One",
+        aboutMe: "I love snowboarding!",
         favoriteSlopeID: [3],
         favoriteLocationID: [5],
         status: true,
@@ -103,29 +85,17 @@ const model = {
                 date: "11/10/11",
                 time: "20:08",
                 userID: 1,
-                message: "hei hei",
-              },
-              {
-                ToUserID: 3,
-                conversation: [
-                  {
-                    date: "09/0101",
-                    time: "10:15",
-                    userID: 1,
-                    message: "helloooooooo :)",
-                  },
-                ]
+                message: "Hi there!",
               }
             ]
           }
         ],
-        friendsID: [2, 3, 4],
+        friendsID: [2, 3],
         statistics: [
           {
             daysInSlope: 10,
             hoursInSlope: 50,
           },
-
         ],
       }
     ],
@@ -133,37 +103,50 @@ const model = {
       {
         id: 1,
         creatorId: 2,
-        title: "hafjell meet",
+        title: "Hafjell Meet",
         date: "2025-07-15",
-        place: ["lillehammer", "", ""],
-        slope: "blue",
-        extraInfo: "",
-        attandees: [1, 2, 3],
+        place: ["Lillehammer"],
+        slope: "Blue",
+        extraInfo: "A fun skiing event!",
+        attendees: [1, 2],
+      },
+      {
+        id: 2,
+        creatorId: 1,
+        title: "Snowboard Jam",
+        date: "2025-08-20",
+        place: ["Oslo"],
+        slope: "Red",
+        extraInfo: "Snowboarding competition.",
+        attendees: [1, 3],
       }
     ],
     gallery: [ 
       {
         id: 1,
-        title: "Triks jeg prøver meg på",
+        title: "Tricks I'm Trying",
+        description: "A video of tricks I am practicing.",
         type: "video",
         src: "videos/sample1.mp4",
       },
       {
         id: 2,
-        title: "Triks jeg skal prøve meg på",
+        title: "Future Tricks",
+        description: "An image of tricks I plan to try.",
         type: "image",
         src: "img/sample2.jpg",
       },
       {
         id: 3,
-        title: "Bilde 1",
+        title: "Beautiful Slope",
+        description: "A stunning view from the slopes.",
         type: "image",
         src: "img/sample3.jpg",
       }
     ],
     logo: {
       src: 'img/logo.png',
-      alt: 'logo'
+      alt: 'Steez Meet Logo'
     },
   },
 };

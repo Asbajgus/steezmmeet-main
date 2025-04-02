@@ -7,34 +7,7 @@ document.getElementById('loginForm').onsubmit = function (event) {
     document.getElementById('contentContainer').innerHTML = `
         <h1>Welcome, ${username}!</h1>
         <p>This is your dashboard. Enjoy your stay!</p>
-        <div class="dashboard">
-            <div class="card">
-                <h3>Mine events</h3>
-                <p>Hafjell meet</p>
-                <button>Ny Event</button>
-            </div>
-            <div class="card">
-                <h3>Liste over events</h3>
-                <p>Hafjell meet</p>
-                <button>Se alle events</button>
-            </div>
-            <div class="card">
-                <h3>Min statistikk</h3>
-                <div class="stats">
-                    <div>25 D</div>
-                    <div>92 T</div>
-                </div>
-                <button>Se diagram</button>
-            </div>
-            <div class="card">
-                <h3>Mine venner</h3>
-                <div class="friends">
-                    <button>Pål</button>
-                    <button>Stig</button>
-                </div>
-                <button>Se alle venner</button>
-            </div>
-        </div>
+        <div id="dashboardContent" class="dashboard"></div>
     `;
 
     // Hide the login form and show the dashboard
@@ -45,26 +18,78 @@ document.getElementById('loginForm').onsubmit = function (event) {
     // Update the "Log In" button to "Log Out"
     document.getElementById('authButton').innerText = 'Log Out';
     document.getElementById('authButtonMobile').innerText = 'Log Out';
+
+    renderDashboard(); // Render dashboard dynamically
 };
+
+function renderDashboard() {
+    const dashboardContent = document.getElementById('dashboardContent');
+    if (!dashboardContent) {
+        console.error("Dashboard container not found.");
+        return;
+    }
+
+    dashboardContent.innerHTML = `
+        <div class="card">
+            <h3>Mine events</h3>
+            <ul>
+                ${model.data.events.map(event => `
+                    <li>${event.title} - ${event.date} (${event.place[0]})</li>
+                `).join('')}
+            </ul>
+            <button>Ny Event</button>
+        </div>
+        <div class="card">
+            <h3>Liste over events</h3>
+            <ul>
+                ${model.data.events.map(event => `
+                    <li>${event.title}</li>
+                `).join('')}
+            </ul>
+            <button>Se alle events</button>
+        </div>
+        <div class="card">
+            <h3>Min statistikk</h3>
+            <div class="stats">
+                <div>${model.data.users[0].statistics[0].daysInSlope} D</div>
+                <div>${model.data.users[0].statistics[0].hoursInSlope} T</div>
+            </div>
+            <button>Se diagram</button>
+        </div>
+        <div class="card">
+            <h3>Mine venner</h3>
+            <div class="friends">
+                ${model.data.users[0].friendsID.map(friendID => {
+                    const friend = model.data.users.find(user => user.id === friendID);
+                    return friend ? `<button>${friend.name}</button>` : '';
+                }).join('')}
+            </div>
+            <button>Se alle venner</button>
+        </div>
+    `;
+}
 
 function renderGalleri() {
     const galleriContent = document.getElementById("galleriContent");
-    galleriContent.innerHTML = ""; // Clear existing content
+    galleriContent.innerHTML = model.data.gallery.map(item => `
+        <div class="galleri-card">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <img src="${item.src}" alt="${item.title}">
+            <button onclick="viewGalleriItem(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+                ${item.type === 'image' ? 'View Image' : 'Play Video'}
+            </button>
+        </div>
+    `).join('');
+}
 
-    let galleriHTML = "";
-    model.data.gallery.forEach((item, index) => {
-        galleriHTML += `
-            <div class="galleri-card">
-                <button class="delete-button" onclick="deleteGalleriItem(${index})">X</button>
-                <h3>${item.title}</h3>
-                <img src="${item.type === "image" ? item.src : "img/video-placeholder.jpg"}" alt="${item.title}">
-                <button onclick="viewGalleriItem(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                    ${item.type === "image" ? "View Image" : "Play Video"}
-                </button>
-            </div>
-        `;
-    });
-    galleriContent.innerHTML = galleriHTML;
+function renderChat() {
+    const chatBox = document.getElementById('chatBox');
+    chatBox.innerHTML = model.data.users[0].chat[0].conversation.map(msg => `
+        <div class="chat-message ${msg.userID === model.data.users[0].id ? 'user' : 'bot'}">
+            ${msg.message}
+        </div>
+    `).join('');
 }
 
 function deleteGalleriItem(index) {
@@ -81,13 +106,19 @@ function addGalleriItem(event) {
         alert("Only images and videos are allowed.");
         return;
     }
-
+    const title = prompt("Enter a title for the item:");
+    if (!title) {
+        alert("Title is required.");
+        return;
+    }
+    const description = prompt("Enter a description for the item (optional):");
     const reader = new FileReader();
     reader.onload = function (e) {
         const newItem = {
-            title: file.name,
+            title: title,
             type: fileType,
             src: e.target.result,
+            description: description || "",
         };
         model.data.gallery.push(newItem); // Add the new item to the model
         renderGalleri(); // Re-render the gallery
@@ -95,38 +126,33 @@ function addGalleriItem(event) {
     reader.readAsDataURL(file); // Read the file as a data URL
 }
 
-function navigateToDashboard() {
-    document.getElementById('galleriContainer').style.display = 'none';
-    document.getElementById('galleriItemContainer').style.display = 'none';
-    document.getElementById('chatContainer').style.display = 'none';
-    document.getElementById('loginContainer').style.display = 'none';
-    document.getElementById('welcomeContainer').style.display = 'none';
-    document.getElementById('contentContainer').style.display = 'block';
-}
+function navigateTo(page) {
+    // Hide all sections
+    model.app.pages.forEach(section => {
+        document.getElementById(section).style.display = 'none';
+    });
 
-function navigateToGalleri() {
-    document.getElementById('contentContainer').style.display = 'none';
-    document.getElementById('galleriItemContainer').style.display = 'none';
-    document.getElementById('chatContainer').style.display = 'none';
-    document.getElementById('loginContainer').style.display = 'none';
-    document.getElementById('welcomeContainer').style.display = 'none';
-    document.getElementById('galleriContainer').style.display = 'block';
-
-    renderGalleri(); // Render gallery items dynamically
-}
-
-function navigateToChat() {
-    document.getElementById('contentContainer').style.display = 'none';
-    document.getElementById('galleriContainer').style.display = 'none';
-    document.getElementById('galleriItemContainer').style.display = 'none';
-    document.getElementById('loginContainer').style.display = 'none';
-    document.getElementById('welcomeContainer').style.display = 'none';
-    document.getElementById('chatContainer').style.display = 'block';
-}
-
-function backToDashboard() {
-    document.getElementById('galleriContainer').style.display = 'none';
-    document.getElementById('galleriItemContainer').style.display = 'none';
-    document.getElementById('chatContainer').style.display = 'none';
-    document.getElementById('contentContainer').style.display = 'block';
+    // Show the appropriate section
+    switch (page) {
+        case 'welcome':
+            document.getElementById('welcomeContainer').style.display = 'block';
+            break;
+        case 'login':
+            document.getElementById('loginContainer').style.display = 'block';
+            break;
+        case 'dashboard':
+            document.getElementById('contentContainer').style.display = 'block';
+            renderDashboard(); // Render dashboard dynamically
+            break;
+        case 'galleri':
+            document.getElementById('galleriContainer').style.display = 'block';
+            renderGalleri(); // Render gallery dynamically
+            break;
+        case 'chat':
+            document.getElementById('chatContainer').style.display = 'block';
+            renderChat(); // Render chat dynamically
+            break;
+        default:
+            console.error(`Unknown page: ${page}`);
+    }
 }

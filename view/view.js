@@ -41,3 +41,23 @@ document.getElementById('loginForm').onsubmit = function (event) {
     document.getElementById('authButton').innerText = 'Log Out';
     document.getElementById('authButtonMobile').innerText = 'Log Out';
 };
+
+function viewGalleriItem(item) {
+    selectedGalleriItem = item;
+    const content = document.getElementById("galleriItemContent");
+
+    if (item.type === "image") {
+        content.innerHTML = `
+            <h2>${item.title}</h2>
+            <img src="${item.src}" alt="${item.title}" style="max-width: 100%;">
+        `;
+    } else if (item.type === "video") {
+        content.innerHTML = `
+            <h2>${item.title}</h2>
+            <video src="${item.src}" controls style="max-width: 100%;"></video>
+        `;
+    }
+
+    document.getElementById("galleriContainer").style.display = "none";
+    document.getElementById("galleriItemContainer").style.display = "block";
+}
