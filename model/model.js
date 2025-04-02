@@ -138,7 +138,7 @@ const model = {
         place: ["lillehammer", "", ""],
         slope: "blue",
         extraInfo: "",
-        attandees: [1, 2, 3],
+        attendees: [1, 2, 3],
       }
     ],
     gallery: [ 
