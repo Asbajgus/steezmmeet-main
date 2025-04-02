@@ -1,12 +1,13 @@
 const model = {
   app: {
     currentPage: 'home',
-    pages: [
-      'logInPage', 'registerPage', 'profilePage', 'dashboardPage', 'chatPage',
-      'createEventPage', 'viewEventPage', 'viewAllEvents', 'galleryPage',
-      'imagePage', 'videoPage', 'statisticsPage', 'viewAllUsers',
-      'viewFriendsPage', 'adminPage', 'galleryAdminPage', 'vennListeAdmin'
-    ]
+    // pages: [
+    //   'logInPage', 'registerPage', 'profilePage', 'dashboardPage', 'chatPage',
+    //   'createEventPage', 'viewEventPage', 'viewAllEvents', 'galleryPage',
+    //   'imagePage', 'videoPage', 'statisticsPage', 'viewAllUsers',
+    //   'viewFriendsPage', 'adminPage', 'galleryAdminPage', 'vennListeAdmin'
+    // ]
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer']
   },
   inputs: {
     logInPage: {

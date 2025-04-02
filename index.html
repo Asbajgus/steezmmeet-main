@@ -160,8 +160,9 @@
 
         function navigateTo(page) {
     // Ukryj wszystkie sekcje
-    const sections = ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer'];
-    sections.forEach(section => {
+    
+        const sections = model.app.pages;
+        sections.forEach(section => {
         document.getElementById(section).style.display = 'none';
     });
 
