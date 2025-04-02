@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="model/model.js"></script>
+    <script src="./model/model.js"></script>
 </head>
 <body>
 </body>
@@ -37,8 +37,7 @@
     </div>
     <div id="welcomeContainer">
         <h1>Welcome to Steez Meet</h1>
-        <p>Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
-        
+        <p id="welcomeMessage">Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
     </div>
     <div id="loginContainer" style="display: none;">
         <h2>Log In</h2>
@@ -49,36 +48,9 @@
         </form>
     </div>
     <div id="contentContainer" style="display: none;">
-        <h1>Welcome to the Dashboard</h1>
-        <p>This is the content visible after logging in.</p>
-        <h1>Dashboard</h1>
-        <div class="dashboard">
-            <div class="card">
-                <h3>Mine events</h3>
-                <p>Hafjell meet</p>
-                <button>Ny Event</button>
-            </div>
-            <div class="card">
-                <h3>Liste over events</h3>
-                <p>Hafjell meet</p>
-                <button>Se alle events</button>
-            </div>
-            <div class="card">
-                <h3>Min statistikk</h3>
-                <div class="stats">
-                    <div>25 D</div>
-                    <div>92 T</div>
-                </div>
-                <button>Se diagram</button>
-            </div>
-            <div class="card">
-                <h3>Mine venner</h3>
-                <div class="friends">
-                    <button>Pål</button>
-                    <button>Stig</button>
-                </div>
-                <button>Se alle venner</button>
-            </div>
+        <h1 id="dashboardTitle">Welcome to the Dashboard</h1>
+        <div id="dashboardContent">
+            <!-- Dashboard content will be dynamically rendered here -->
         </div>
     </div>
     <div id="galleriContainer" style="display: none;">
@@ -87,10 +59,9 @@
             <label for="fileInput" class="add-item-button">+</label>
             <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;" onchange="addGalleriItem(event)">
         </div>
-        <div class="galleri" id="galleriContent">
+        <div id="galleriContent">
             <!-- Gallery items will be dynamically rendered here -->
         </div>
-        <button onclick="navigateToDashboard()">Back to Dashboard</button>
     </div>
     <div id="galleriItemContainer" style="display: none;">
         <div class="galleri-item">
@@ -104,8 +75,8 @@
     </div>
     <div id="chatContainer" style="display: none;">
         <h1>Chat</h1>
-        <div class="chat-box" id="chatBox">
-            <!-- Messages will be dynamically rendered here -->
+        <div id="chatBox">
+            <!-- Chat messages will be dynamically rendered here -->
         </div>
         <div class="chat-input">
             <input type="text" id="chatMessageInput" placeholder="Type your message..." />
