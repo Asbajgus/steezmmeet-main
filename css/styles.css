@@ -16,12 +16,62 @@ body {
     position: relative;
     height: 60px; /* Set consistent height */
 }
+h1{
+    color: #007bb5;
+    margin-left: 1rem;
+}
+#welcomeContainer {
+    text-align: center;
+    justify-content: center; 
+    align-items: center;
+}
+
+#welcomeContainer h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 
+        2px  2px 0 #007bb5,
+        -2px -2px 0 #005f87,
+        1px  -1px 0 #007bb5,
+        -1px 1px 0 #005f87;
+    letter-spacing: 2px;
+}
+#welcomeContainer p {
+    color: #a3d9ff;
+    font-style: italic;
+    font-size: 20px;
+}
+
+#welcomeContainer #steezMeet {
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+#welcomeContainer #chille {
+    text-transform: uppercase;
+    font-weight: bold;
+}
 .logo {
-    position: absolute;
+    position: relative;
     left: 20px;
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center align the logo image and text */
+    
+}
+.logo p{
+    margin-top: 5px; /* Space between the logo and text */
+    font-size: 18px; /* Adjust the size of the text as needed */
+    text-align: center; /* Ensure the text is centered under the logo */
+    line-height: 1.2; /* Ensure the line height is comfortable */
+    margin-bottom: 40px;
+    font-style: italic;
+
 }
 .logo img {
+    margin-top: 40px;
     height: 50px; /* Adjust logo height to fit header */
+    
 }
 .hamburger {
     display: none;
@@ -264,33 +314,25 @@ body {
 }
 
 .add-item {
-    text-align: center;
-    margin: 20px 0;
+    text-align: right;
+    margin-right:  40px;
 }
-
-.add-item.top-right {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-}
-
 .add-item-button {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-color: #007bff;
+    font-size: 30px;
+    font-weight: bold;
     color: white;
-    font-size: 24px;
-    text-align: center;
-    line-height: 40px;
+    background-color: #005f87;
+    border: none;
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .add-item-button:hover {
-    background-color: #0056b3;
+    background-color: #007bb5;
 }
 
 .galleri-card {
