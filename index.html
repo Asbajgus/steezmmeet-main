@@ -6,7 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="event/eventStyle.css">
+    <link rel="stylesheet" href="statistics/statistics.css">
     <script src="./model.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 </head>
 <body>
 </body>
@@ -89,6 +91,12 @@
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
 
+    <div id="statisticsFullPage" style="display: none;">
+        <h1>Statistikk - Full visning</h1>
+        <canvas id="statisticsFullChart" width="5" height="3"></canvas>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
+
     <div id="eventContainer" style="display: none;">
         <h1>Event</h1>
         <button onclick="backToDashboard()">Back to Dashboard</button>
@@ -107,6 +115,7 @@
             document.getElementById('eventContainer').style.display = 'none';
             document.getElementById('galleriItemContainer').style.display = 'none';
             document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('statisticsFullPage').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'block';
         }
     </script>
@@ -120,4 +129,6 @@
     <script src="gallery/galleryViewController.js"></script>
     <script src="chat/chatView.js"></script>
     <script src="chat/chatController.js"></script>
+    <script src="statistics/statisticsView.js"></script>
+    <script src="statistics/statisticsController.js"></script>
 </body>

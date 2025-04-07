@@ -1,7 +1,7 @@
 const model = {
   app: {
     currentPage: 'home',
-    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer']
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer',]
   },
   inputs: {
     logInPage: {
@@ -63,10 +63,9 @@ const model = {
         ],
         friendsID: [1, 3, 4],
         statistics: [
-          {
-            daysInSlope: 24,
-            hoursInSlope: 70,
-          },
+          { week: 1, daysInSlope: 5, hoursInSlope: 20 },
+          { week: 2, daysInSlope: 4, hoursInSlope: 18 },
+          { week: 3, daysInSlope: 6, hoursInSlope: 24 },
         ],
       },
       {
@@ -150,10 +149,9 @@ const model = {
         ],
         friendsID: [1, 3],
         statistics: [
-          {
-            daysInSlope: 24,
-            hoursInSlope: 70,
-          },
+          { week: 1, daysInSlope: 5, hoursInSlope: 20 },
+          { week: 2, daysInSlope: 4, hoursInSlope: 18 },
+          { week: 3, daysInSlope: 6, hoursInSlope: 24 },
         ],
       }
     ],

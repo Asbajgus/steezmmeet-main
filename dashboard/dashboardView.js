@@ -30,7 +30,7 @@ function renderDashboard() {
                 <div>${model.data.users[0].statistics[0].daysInSlope} D</div>
                 <div>${model.data.users[0].statistics[0].hoursInSlope} T</div>
             </div>
-            <button>Se diagram</button>
+            <button onclick="renderStatisticsPage()">Se diagram</button>
         </div>
         <div class="card">
             <h3>Mine venner</h3>
