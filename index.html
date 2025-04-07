@@ -92,75 +92,8 @@
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        function showLoginForm() {
-            document.getElementById('welcomeContainer').style.display = 'none';
-            document.getElementById('loginContainer').style.display = 'block';
-        }
-
-        function handleAuth() {
-            const isLoggedIn = document.getElementById('authButton').innerText === 'Log Out';
-            if (isLoggedIn) {
-                // Log out logic
-                document.getElementById('contentContainer').style.display = 'none';
-                document.getElementById('welcomeContainer').style.display = 'block';
-                document.getElementById('authButton').innerText = 'Log In';
-                document.getElementById('authButtonMobile').innerText = 'Log In';
-            } else {
-                // Show login form
-                showLoginForm();
-            }
-        }
 
 
-
-        function viewImage(title) {
-            alert(`Viewing image: ${title}`);
-        }
-
-        let selectedGalleriItem = null;
-
-        function viewGalleriItem(item) {
-            selectedGalleriItem = item;
-            const content = document.getElementById("galleriItemContent");
-            content.innerHTML = ""; // Clear existing content
-
-            if (item.type === "image") {
-                const img = document.createElement("img");
-                img.src = item.src;
-                img.alt = item.title;
-                img.style.maxWidth = "100%";
-                content.appendChild(img);
-            } else if (item.type === "video") {
-                const video = document.createElement("video");
-                video.src = item.src;
-                video.controls = true;
-                video.style.maxWidth = "100%";
-                content.appendChild(video);
-            }
-
-            document.getElementById("galleriContainer").style.display = "none";
-            document.getElementById("galleriItemContainer").style.display = "block";
-        }
-
-        function deleteGalleriItem() {
-            if (selectedGalleriItem) {
-                const index = galleriModel.findIndex(item => item.title === selectedGalleriItem.title);
-                if (index > -1) {
-                    galleriModel.splice(index, 1);
-                    backToGalleri();
-                }
-            }
-        }
-
-        function editGalleriItem() {
-            alert("Edit functionality is not implemented yet.");
-        }
-
-        function backToGalleri() {
-            document.getElementById("galleriItemContainer").style.display = "none";
-            document.getElementById("galleriContainer").style.display = "block";
-            renderGalleri(); // Re-render the gallery after deletion
-        }
 
         const chatModel = [
             { sender: "user", message: "Hi there!" },
@@ -199,7 +132,12 @@
             document.getElementById('contentContainer').style.display = 'block';
         }
     </script>
-    <script src="app.js"></script>
+    
     <script src="login/loginView.js"></script>
-    <script src="login/loginViewController.js"></script>
+    <script src="login/loginController.js"></script>
+    <script src="dashboard/dashboardView.js"></script>
+    <script src="gallery/galleryView.js"></script>
+    
+    <script src="app.js"></script>
+    <script src="gallery/galleryViewController.js"></script>
 </body>
