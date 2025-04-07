@@ -1,7 +1,7 @@
 const model = {
   app: {
     currentPage: 'home',
-    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer']
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer']
   },
   inputs: {
     logInPage: {
@@ -185,7 +185,7 @@ const model = {
         place: ["Fall"],
         slope: "Red",
         extraInfo: "Musikk festival.",
-        attendees: [1, 2,3],
+        attendees: [1, 2, 3],
       }
     ],
     gallery: [ 

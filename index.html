@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="event/eventStyle.css">
     <script src="./model.js"></script>
 </head>
 <body>
@@ -25,6 +26,7 @@
             <button onclick="navigateTo('dashboard')">Dashboard</button>
             <button onclick="navigateTo('galleri')">Galleri</button>
             <button onclick="navigateTo('chat')">Chat</button>
+            <button onclick="navigateTo('event')">Event</button>
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
@@ -33,6 +35,7 @@
             <button onclick="navigateTo('dashboard')">Dashboard</button>
             <button onclick="navigateTo('galerii')">Galleri</button>
             <button onclick="navigateTo('chat')">Chat</button>
+            <button onclick="navigateTo('event')">Event</button>
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
@@ -85,14 +88,17 @@
         </div>
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
+
+    <div id="eventContainer" style="display: none;">
+        <h1>Event</h1>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
     
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
-
-
 
 
         const chatModel = [
@@ -127,6 +133,7 @@
 
         function backToDashboard() {
             document.getElementById('galleriContainer').style.display = 'none';
+            document.getElementById('eventContainer').style.display = 'none';
             document.getElementById('galleriItemContainer').style.display = 'none';
             document.getElementById('chatContainer').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'block';
@@ -137,7 +144,7 @@
     <script src="login/loginController.js"></script>
     <script src="dashboard/dashboardView.js"></script>
     <script src="gallery/galleryView.js"></script>
-    
+    <script src="event/eventView.js"></script>
     <script src="app.js"></script>
     <script src="gallery/galleryViewController.js"></script>
 </body>

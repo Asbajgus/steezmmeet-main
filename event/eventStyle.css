@@ -1,121 +1,64 @@
-body {
-    font-family: sans-serif;
-    margin: 20px;
-    background: linear-gradient(to right, #7bffff 0%, #ffffff 100%);
-    color: #333;
-    display: flex; /* Enable flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: flex-start; /* Align items to the top */
-    min-height: 100vh; /* Ensure body takes at least the full viewport height */
-}
+/* event/eventStyle.css */
 
 #eventContainer {
-    background-color: #fff;
+    font-family: 'Noto Sans', Arial, sans-serif; /* Consistent font */
+    margin: 20px auto; /* Center the container */
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: max-content; /* Set the width to 80% */
+    width: 80%; /* Adjust width as needed */
+    max-width: 1000px; /* Maximum width to prevent stretching on large screens */
 }
 
-h1, h2, h3 {
-    color: #337ab7;
-    margin-top: 0;
-    text-align: center; /* Center headings within the container */
+#eventContainer h1, #eventContainer h2, #eventContainer h3 {
+    color: #007bb5; /* Primary color from the header */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-table {
+/* Table Styles */
+#eventTable {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-th, td {
+#eventTable th, #eventTable td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-th {
+#eventTable th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
-tr:nth-child(even) {
+#eventTable tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-button {
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #4cae4c;
-}
-
-button[onclick*="Cancel"],
-button[onclick*="Back"] {
-    background-color: #d9534f;
-}
-
-button[onclick*="Cancel"]:hover,
-button[onclick*="Back"]:hover {
-    background-color: #c9302c;
-}
-
-button[onclick*="Delete"] {
-    background-color: #f0ad4e;
-}
-
-button[onclick*="Delete"]:hover {
-    background-color: #eea236;
-}
-
-input[type="text"],
-input[type="date"],
-textarea,
-select {
+/* Form Elements */
+#eventContainer input[type="text"],
+#eventContainer input[type="date"],
+#eventContainer textarea,
+#eventContainer select {
     width: calc(100% - 16px);
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #87c9e8; /* Consistent border color */
+    border-radius: 5px; /* Consistent border radius */
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: 'Noto Sans', Arial, sans-serif; /* Consistent font */
 }
 
-textarea {
-    font-family: inherit;
+#eventContainer textarea {
     resize: vertical;
 }
 
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 10px;
-}
-
-li {
-    margin-bottom: 5px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-select {
+#eventContainer select {
     appearance: none;
     -webkit-appearance: none;
     background-color: #fff;
@@ -126,6 +69,80 @@ select {
     cursor: pointer;
 }
 
-select::-ms-expand {
+#eventContainer select::-ms-expand {
     display: none;
+}
+
+/* List Styles */
+#eventContainer ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+#eventContainer li {
+    margin-bottom: 5px;
+}
+
+#eventContainer label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Ensure label text is readable */
+}
+
+/* Button Styles - Consistent with the rest of the site */
+#eventContainer button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 5px; /* Spacing between buttons */
+}
+
+#eventContainer button:hover {
+    background: #cceeff;
+}
+
+/* Additional Styling */
+.event-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.attendee-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.attendee-list li {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background-color: #e6f7ff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attendee-list li button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.attendee-list li button:hover {
+    background-color: #ff4949;
 }

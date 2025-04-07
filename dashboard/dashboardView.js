@@ -13,7 +13,7 @@ function renderDashboard() {
                     <li>${event.title} - ${event.date} (${event.place[0]})</li>
                 `).join('')}
             </ul>
-            <button>Ny Event</button>
+            <button onclick="createNewEvent()">Ny Event</button>
         </div>
         <div class="card">
             <h3>Liste over events</h3>
@@ -22,7 +22,7 @@ function renderDashboard() {
                     <li>${event.title}</li>
                 `).join('')}
             </ul>
-            <button>Se alle events</button>
+            <button onclick="showAllEvents()">Se alle events</button>
         </div>
         <div class="card">
             <h3>Min statistikk</h3>

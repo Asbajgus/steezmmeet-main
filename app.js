@@ -36,6 +36,11 @@ function navigateTo(page) {
             document.getElementById('chatContainer').style.display = 'block';
             renderChat(); // Render chat dynamically
             break;
+        case 'event':
+            document.getElementById('eventContainer').style.display = 'block';
+            showAllEvents(); // Render chat dynamically
+            break;
+
         default:
             console.error(`Unknown page: ${page}`);
     }
