@@ -38,7 +38,11 @@ function navigateTo(page) {
             break;
         case 'event':
             document.getElementById('eventContainer').style.display = 'block';
-            showAllEvents(); // Render chat dynamically
+            showAllEvents(); // Render event dynamically
+            break;
+        case 'newEvent':
+            document.getElementById('eventContainer').style.display = 'block';
+            createNewEvent(); // Render event dynamically
             break;
 
         default:
