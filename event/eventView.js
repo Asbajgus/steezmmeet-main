@@ -141,7 +141,7 @@ function eventFormFields(e, mode, index = null) {
             `).join('')}
         </select>
     </p>
-    <p>Description:<br> <textarea id="${mode}ExtraInfo" rows="5" cols="160" oninput="model.inputs.EventPage.extraInfo=this.value">${e.extraInfo}</textarea></p>
+    <p>Description:<br> <textarea id="${mode}Description" rows="5" cols="160" oninput="model.inputs.EventPage.description=this.value">${e.description}</textarea></p>
     `;
 }
 
