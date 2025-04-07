@@ -101,35 +101,6 @@
         }
 
 
-        const chatModel = [
-            { sender: "user", message: "Hi there!" },
-            { sender: "bot", message: "Hello! How can I help you today?" },
-        ];
-
-        function renderChat() {
-            const chatBox = document.getElementById("chatBox");
-            chatBox.innerHTML = ""; // Clear existing messages
-
-            chatModel.forEach(msg => {
-                const messageDiv = document.createElement("div");
-                messageDiv.className = `chat-message ${msg.sender}`;
-                messageDiv.innerText = msg.message;
-                chatBox.appendChild(messageDiv);
-            });
-
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
-        }
-
-        function sendMessage() {
-            const input = document.getElementById("chatMessageInput");
-            const message = input.value.trim();
-            if (message) {
-                chatModel.push({ sender: "user", message });
-                chatModel.push({ sender: "bot", message: "Got it! Let me assist you." }); // Simulate bot response
-                input.value = "";
-                renderChat();
-            }
-        }
 
         function backToDashboard() {
             document.getElementById('galleriContainer').style.display = 'none';
@@ -147,4 +118,6 @@
     <script src="event/eventView.js"></script>
     <script src="app.js"></script>
     <script src="gallery/galleryViewController.js"></script>
+    <script src="chat/chatView.js"></script>
+    <script src="chat/chatController.js"></script>
 </body>

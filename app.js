@@ -1,13 +1,4 @@
 
-function renderChat() {
-    const chatBox = document.getElementById('chatBox');
-    chatBox.innerHTML = model.data.users[0].chat[0].conversation.map(msg => `
-        <div class="chat-message ${msg.userID === model.data.users[0].id ? 'user' : 'bot'}">
-            ${msg.message}
-        </div>
-    `).join('');
-}
-
 
 
 function navigateTo(page) {
