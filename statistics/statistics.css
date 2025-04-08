@@ -5,6 +5,9 @@
     max-width: 100;
     margin: 0 auto;
 }
+#statisticsFullPage {
+    display: none; /* Skjul grafen på forhånd */
+}
 #statisticsFullPage h1 {
     margin-left: 800px;
 }

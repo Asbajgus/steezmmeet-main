@@ -16,6 +16,7 @@ function navigateTo(page) {
             document.getElementById('loginContainer').style.display = 'block';
             break;
         case 'dashboard':
+            document.getElementById('statisticsFullPage').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'block';
             renderDashboard(); // Render dashboard dynamically
             break;
