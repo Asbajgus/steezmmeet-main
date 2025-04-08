@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="event/eventStyle.css">
     <link rel="stylesheet" href="statistics/statistics.css">
+    <link rel="stylesheet" href="friends/friendStyle.css">
     <script src="./model.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 </head>
@@ -29,6 +30,7 @@
             <button onclick="navigateTo('galleri')">Galleri</button>
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
+            <button onclick="navigateTo('friends')">Friends</button>
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
@@ -38,6 +40,8 @@
             <button onclick="navigateTo('galerii')">Galleri</button>
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
+            <button onclick="navigateTo('friends')">Friends</button>
+
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
@@ -101,6 +105,11 @@
         <h1>Event</h1>
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
+
+    <div id="friendContainer" style="display: none;">
+        <h1>Friends</h1>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
     
     <script>
         function toggleMenu() {
@@ -113,6 +122,7 @@
         function backToDashboard() {
             document.getElementById('galleriContainer').style.display = 'none';
             document.getElementById('eventContainer').style.display = 'none';
+            document.getElementById('friendContainer').style.display = 'none';
             document.getElementById('galleriItemContainer').style.display = 'none';
             document.getElementById('chatContainer').style.display = 'none';
             document.getElementById('statisticsFullPage').style.display = 'none';
@@ -131,4 +141,5 @@
     <script src="chat/chatController.js"></script>
     <script src="statistics/statisticsView.js"></script>
     <script src="statistics/statisticsController.js"></script>
+    <script src="friends/friendView.js"></script>
 </body>

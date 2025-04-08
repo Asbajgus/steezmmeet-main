@@ -1,7 +1,7 @@
 const model = {
   app: {
     currentPage: 'home',
-    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer',]
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer']
   },
   inputs: {
     logInPage: {
@@ -154,8 +154,53 @@ const model = {
           { week: 3, daysInSlope: 6, hoursInSlope: 24 },
         ],
       }
+    ], 
+    locations: [
+      {
+        id: 1,
+        location: "Hemsedal",
+        slopes: [
+          { id: 1, name: "Totten-Hemsedal", difficulty: "Easy" },
+          { id: 2, name: "Tottenløypa No. 5", difficulty: "Difficult" },
+          { id: 3, name: "Sahaugløypa No. 8", difficulty: "Intermediate" },
+          { id: 4, name: "Midtløypa No. 14", difficulty: "Intermediate" },
+          { id: 5, name: "Skarløypa No. 17", difficulty: "Intermediate" },
+          { id: 6, name: "Hemsedalløypa No. 10", difficulty: "Intermediate" },
+          { id: 7, name: "Slope No. 32 (Fun Ride)", difficulty: "Easy" },
+          { id: 8, name: "SnowPark Red", difficulty: "Difficult" },
+          { id: 9, name: "SnowPark Blue", difficulty: "Intermediate" },
+          { id: 10, name: "Skicross Track", difficulty: "Intermediate" }
+        ],
+      },
+      {
+        id: 2,
+        location: "Trysil",
+        slopes: [
+          { id: 1, name: "Trysilfjellet-Trysil", difficulty: "Easy" },
+          { id: 2, name: "Ekspert'n", difficulty: "Difficult" },
+          { id: 3, name: "Eventyr", difficulty: "Easy" },
+          { id: 4, name: "Valle's Ski Area", difficulty: "Easy" },
+          { id: 5, name: "Snow Park Red & Black", difficulty: "Difficult" },
+          { id: 6, name: "Snow Park Blue", difficulty: "Intermediate" },
+          { id: 7, name: "Snow Park Green", difficulty: "Easy" },
+          { id: 8, name: "Fun Ride", difficulty: "Intermediate" },
+          { id: 9, name: "Ski Cross Track", difficulty: "Intermediate" },
+          { id: 10, name: "Parallel Slalom Course", difficulty: "Intermediate" }
+        ]
+      },
+      {
+        id: 3,
+        location: "Hafjell",
+        slopes: [
+          { id: 1, name: "Hafjell Alpine Centre", difficulty: "Intermediate" },
+          { id: 2, name: "Lilleputthammer", difficulty: "Easy" },
+          { id: 3, name: "Hafjell Bike Park", difficulty: "Difficult" },
+          { id: 4, name: "Hafjell Snow Park", difficulty: "Intermediate" },
+          { id: 5, name: "Hafjell Cross-Country Arena", difficulty: "Easy" }
+        ]
+      },
     ],
-    events: [
+      events: [
       {
         id: 1,
         creatorId: 2,

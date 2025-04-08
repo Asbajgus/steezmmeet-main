@@ -37,10 +37,10 @@ function renderDashboard() {
             <div class="friends">
                 ${model.data.users[0].friendsID.map(friendID => {
                     const friend = model.data.users.find(user => user.id === friendID);
-                    return friend ? `<button>${friend.name}</button>` : '';
+                    return friend ? `<button onclick="showFriendByName('${friend.name}')")">${friend.name}</button>` : '';
                 }).join('')}
             </div>
-            <button>Se alle venner</button>
+            <button onclick="navigateTo('friends')">Se alle venner</button>
         </div>
     `;
 }

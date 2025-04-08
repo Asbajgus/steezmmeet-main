@@ -35,7 +35,10 @@ function navigateTo(page) {
             document.getElementById('eventContainer').style.display = 'block';
             createNewEvent(); // Render event dynamically
             break;
-
+        case 'friends':
+            document.getElementById('friendContainer').style.display = 'block';
+            showAllFriends();
+            break;
         default:
             console.error(`Unknown page: ${page}`);
     }

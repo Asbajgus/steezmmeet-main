@@ -1,0 +1,125 @@
+/* General container for the friend view */
+#friendContainer {
+    font-family: 'Noto Sans', Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+/* Headings within the friend container */
+#friendContainer h1, #friendContainer h2, #friendContainer h3 {
+    color: #007bb5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Friend table styles */
+#friendTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#friendTable th, #friendTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#friendTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#friendTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Input elements (text, etc.) */
+#friendContainer input[type="text"],
+#friendContainer textarea {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #87c9e8;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Noto Sans', Arial, sans-serif;
+}
+
+#friendContainer textarea {
+    resize: vertical;
+}
+
+/* Buttons */
+#friendContainer button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+#friendContainer button:hover {
+    background: #cceeff;
+}
+
+/* Friend search container */
+.friend-search-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.friend-search-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Search results list */
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.search-results ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results li {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.search-results li:hover {
+    background-color: #e6f7ff;
+}
+
+/* Confirmation dialog styles */
+.confirmation-dialog {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
