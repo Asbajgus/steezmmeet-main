@@ -46,7 +46,8 @@ function showAllFriends() {
         </table>
         <br>
         <button onclick="addNewFriendView()">Add New Friend</button>
-    `;
+        <button onclick="navigateTo('dashboard')">Dashboard</button>
+        `;
 
     const table = document.getElementById('friendTable');
     friendArray.forEach((f, i) => {
@@ -87,6 +88,7 @@ function showFriend(index) {
 
 function showFriendByName(name) {
     const f = friendArray.find(friend => friend.name === name);
+    const index = friendArray.indexOf(f);
     navigateTo('friends');
     document.getElementById('friendContainer').innerHTML = /*HTML*/ `
         <h1>${f.name}</h1>
@@ -97,7 +99,7 @@ function showFriendByName(name) {
         <p><strong>Favourite Location:</strong> ${getLocationName(f.favoriteLocationID)}</p>
         <p><strong>Status:</strong> ${realStatus(f)}</p>
         <br>
-        <button onclick="editFriend(${name})">Edit</button>
+        <button onclick="editFriend(${index})">Edit</button>
         <button onclick="showAllFriends()">Back</button> <br>
         `;
 
