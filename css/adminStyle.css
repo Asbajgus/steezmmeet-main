@@ -1,0 +1,118 @@
+#adminContainer {
+    font-family: 'Noto Sans', Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+#adminContainer h1 {
+    color: #007bb5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.admin-section h2 {
+    margin-bottom: 10px;
+    color: #005f87;
+}
+
+.admin-section button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    transition: background-color 0.3s ease;
+}
+
+.admin-section button:hover {
+    background: #cceeff;
+}
+
+#adminFriendTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#adminFriendTable th, #adminFriendTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#adminFriendTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#adminFriendTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#adminFriendTable button {
+    padding: 5px 10px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#adminFriendTable button:hover {
+    background: #cceeff;
+}
+
+#adminChatTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#adminChatTable th, #adminChatTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#adminChatTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#adminChatTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#adminChatTable button {
+    padding: 5px 10px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#adminChatTable button:hover {
+    background: #cceeff;
+}

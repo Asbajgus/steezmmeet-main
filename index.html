@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Steez Meet</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="event/eventStyle.css">
     <link rel="stylesheet" href="statistics/statistics.css">
     <link rel="stylesheet" href="friends/friendStyle.css">
+    <link rel="stylesheet" href="admin/adminStyle.css">
     <script src="./model.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-</head>
-<body>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="header">
@@ -31,24 +29,27 @@
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
+            <button onclick="navigateTo('admin')">Admin</button>
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
         </div>
         <div class="nav-buttons mobile" id="mobileMenu">
             <button onclick="navigateTo('dashboard')">Dashboard</button>
-            <button onclick="navigateTo('galerii')">Galleri</button>
+            <button onclick="navigateTo('galleri')">Galleri</button>
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
-
+            <button onclick="navigateTo('admin')">Admin</button>
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
     </div>
+
     <div id="welcomeContainer">
         <h1>Welcome to Steez Meet</h1>
         <p id="welcomeMessage">Connect, share, and collaborate with ease. Click "Log In" to get started.</p>
     </div>
+
     <div id="loginContainer" style="display: none;">
         <h2>Log In</h2>
         <form id="loginForm">
@@ -57,32 +58,32 @@
             <button type="submit">Log In</button>
         </form>
     </div>
+
     <div id="contentContainer" style="display: none;">
         <h1 id="dashboardTitle">Welcome to the Dashboard</h1>
         <div id="dashboardContent">
             <!-- Dashboard content will be dynamically rendered here -->
         </div>
     </div>
+
     <div id="galleriContainer" style="display: none;">
         <h1>Galleri</h1>
-        <div class="add-item top-right">
-            <label for="fileInput" class="add-item-button">+</label>
-            <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;" onchange="addGalleriItem(event)">
-        </div>
+        
         <div id="galleriContent">
             <!-- Gallery items will be dynamically rendered here -->
         </div>
     </div>
+
     <div id="galleriItemContainer" style="display: none;">
         <div class="galleri-item">
-            
             <div id="galleriItemContent">
                 <!-- Content (image or video) will be dynamically rendered here -->
             </div>
             <button class="edit-button" onclick="editGalleriItem()">Edit</button>
-            <button onclick="backToGalleri()">Back to Galleri</button>
+            <button onclick="backToDashboard()">Back to Dashboard</button>
         </div>
     </div>
+
     <div id="chatContainer" style="display: none;">
         <h1>Chat</h1>
         <div id="chatBox">
@@ -110,36 +111,27 @@
         <h1>Friends</h1>
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
-    
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-        }
 
+    <div id="adminContainer" style="display: none;">
+        <h1>Admin Panel</h1>
+        <div id="adminContent">
+            <!-- Admin content will be dynamically rendered here -->
+        </div>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
 
-
-        function backToDashboard() {
-            document.getElementById('galleriContainer').style.display = 'none';
-            document.getElementById('eventContainer').style.display = 'none';
-            document.getElementById('friendContainer').style.display = 'none';
-            document.getElementById('galleriItemContainer').style.display = 'none';
-            document.getElementById('chatContainer').style.display = 'none';
-            document.getElementById('statisticsFullPage').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'block';
-        }
-    </script>
-    
     <script src="login/loginView.js"></script>
     <script src="login/loginController.js"></script>
     <script src="dashboard/dashboardView.js"></script>
     <script src="gallery/galleryView.js"></script>
     <script src="event/eventView.js"></script>
-    <script src="app.js"></script>
     <script src="gallery/galleryViewController.js"></script>
     <script src="chat/chatView.js"></script>
     <script src="chat/chatController.js"></script>
     <script src="statistics/statisticsView.js"></script>
     <script src="statistics/statisticsController.js"></script>
     <script src="friends/friendView.js"></script>
+    <script src="admin/adminView.js"></script>
+    <script src="app.js"></script>
 </body>
+</html>
