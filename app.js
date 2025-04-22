@@ -1,10 +1,10 @@
-
-
-
 function navigateTo(page) {
     // Hide all sections
     model.app.pages.forEach(section => {
-        document.getElementById(section).style.display = 'none';
+        const element = document.getElementById(section);
+        if (element) {
+            element.style.display = 'none';
+        }
     });
 
     // Show the appropriate section
@@ -30,15 +30,15 @@ function navigateTo(page) {
             break;
         case 'event':
             document.getElementById('eventContainer').style.display = 'block';
-            showAllEvents(); // Render event dynamically
-            break;
-        case 'newEvent':
-            document.getElementById('eventContainer').style.display = 'block';
-            createNewEvent(); // Render event dynamically
+            showAllEvents(); // Render events dynamically
             break;
         case 'friends':
             document.getElementById('friendContainer').style.display = 'block';
-            showAllFriends();
+            showAllFriends(); // Render friends dynamically
+            break;
+        case 'admin':
+            document.getElementById('adminContainer').style.display = 'block';
+            renderAdminPage(); // Render admin panel dynamically
             break;
         case 'admin':
             document.getElementById('adminContainer').style.display = 'block';
@@ -47,4 +47,8 @@ function navigateTo(page) {
         default:
             console.error(`Unknown page: ${page}`);
     }
+}
+
+function backToDashboard() {
+    navigateTo('dashboard');
 }

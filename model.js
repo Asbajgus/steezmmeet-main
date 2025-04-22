@@ -2,6 +2,7 @@ const model = {
   app: {
     currentPage: 'home',
     pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer', 'statisticsFullPage'],
+
   },
   inputs: {
     logInPage: {
