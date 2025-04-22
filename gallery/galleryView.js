@@ -27,11 +27,11 @@ function viewGalleriItem(item) {
 }
 
 
-function backToGalleri() {
-    document.getElementById("galleriItemContainer").style.display = "none";
-    document.getElementById("galleriContainer").style.display = "block";
-    renderGalleri(); // Re-render the gallery after deletion
-}
+// function backToGalleri() {
+//     document.getElementById("galleriItemContainer").style.display = "none";
+//     document.getElementById("galleriContainer").style.display = "block";
+//     renderGalleri(); // Re-render the gallery after deletion
+// }
 
 
 function renderGalleri() {
@@ -39,11 +39,9 @@ function renderGalleri() {
     galleriContent.innerHTML = model.data.gallery.map(item => `
         <div class="galleri-card">
             <h3>${item.title}</h3>
-            <p>${item.description}</p>
+            
             <img src="${item.src}" alt="${item.title}">
-            <button onclick="viewGalleriItem(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                ${item.type === 'image' ? 'View Image' : 'Play Video'}
-            </button>
+            <p>${item.description}</p>
         </div>
     `).join('');
 }

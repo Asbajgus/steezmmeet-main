@@ -1,7 +1,11 @@
 const model = {
   app: {
     currentPage: 'home',
+<<<<<<< HEAD
     pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer', 'adminContainer', 'statisticsFullPage'],
+=======
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer', 'adminContainer']
+>>>>>>> 09edd69d9591aeee57725814fd1151f902edb9ac
   },
   inputs: {
     logInPage: {
