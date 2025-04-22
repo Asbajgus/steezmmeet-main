@@ -31,6 +31,8 @@
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
+            <button onclick="navigateTo('admin')">Admin</button>
+
         </div>
         <div class="nav-buttons right">
             <button id="authButton" onclick="handleAuth()">Log In</button>
@@ -41,6 +43,7 @@
             <button onclick="navigateTo('chat')">Chat</button>
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
+            <button onclick="navigateTo('admin')">Admin</button>
 
             <button id="authButtonMobile" onclick="handleAuth()">Log In</button>
         </div>
@@ -111,6 +114,8 @@
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>
     
+    
+    
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
@@ -142,4 +147,6 @@
     <script src="statistics/statisticsView.js"></script>
     <script src="statistics/statisticsController.js"></script>
     <script src="friends/friendView.js"></script>
+    <script src="admin/adminController.js"></script>
+    <script src="admin/adminView.js"></script>
 </body>

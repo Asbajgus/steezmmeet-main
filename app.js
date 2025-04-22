@@ -40,6 +40,10 @@ function navigateTo(page) {
             document.getElementById('friendContainer').style.display = 'block';
             showAllFriends();
             break;
+        case 'admin':
+            document.getElementById('adminContainer').style.display = 'block';
+            showAllUsers();
+            break;
         default:
             console.error(`Unknown page: ${page}`);
     }
