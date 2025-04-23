@@ -1,48 +1,39 @@
-function editGalleriItem() {
-    alert("Edit functionality is not implemented yet.");
-}
+function handleAddGalleriItem() {
+    const title = document.getElementById("newGalleriTitle").value.trim();
+    const description = document.getElementById("newGalleriDescription").value.trim();
+    const fileInput = document.getElementById("newGalleriFile");
+    const file = fileInput.files[0];
 
-function deleteGalleriItem() {
-    if (selectedGalleriItem) {
-        const index = galleriModel.findIndex(item => item.title === selectedGalleriItem.title);
-        if (index > -1) {
-            galleriModel.splice(index, 1);
-            backToGalleri();
-        }
+    if (!title) {
+        alert("Title is required.");
+        return;
     }
-}
 
-
-function deleteGalleriItem(index) {
-    model.data.gallery.splice(index, 1); // Remove the item from the model
-    renderGalleri(); // Re-render the gallery
-}
-
-function addGalleriItem(event) {
-    const file = event.target.files[0];
-    if (!file) return;
+    if (!file) {
+        alert("Please select a file.");
+        return;
+    }
 
     const fileType = file.type.startsWith("image/") ? "image" : file.type.startsWith("video/") ? "video" : null;
     if (!fileType) {
         alert("Only images and videos are allowed.");
         return;
     }
-    const title = prompt("Enter a title for the item:");
-    if (!title) {
-        alert("Title is required.");
-        return;
-    }
-    const description = prompt("Enter a description for the item (optional):");
+
     const reader = new FileReader();
     reader.onload = function (e) {
         const newItem = {
             title: title,
+            description: description || "",
             type: fileType,
             src: e.target.result,
-            description: description || "",
         };
         model.data.gallery.push(newItem); // Add the new item to the model
         renderGalleri(); // Re-render the gallery
     };
     reader.readAsDataURL(file); // Read the file as a data URL
 }
+
+
+
+
