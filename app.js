@@ -32,6 +32,10 @@ function navigateTo(page) {
             document.getElementById('eventContainer').style.display = 'block';
             showAllEvents(); // Render events dynamically
             break;
+        case 'newEvent':
+            document.getElementById('eventContainer').style.display = 'block';
+            createNewEvent();
+            break;    
         case 'friends':
             document.getElementById('friendContainer').style.display = 'block';
             showAllFriends(); // Render friends dynamically
