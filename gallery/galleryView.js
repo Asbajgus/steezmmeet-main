@@ -36,13 +36,21 @@ function viewGalleriItem(item) {
 
 function renderGalleri() {
     const galleriContent = document.getElementById("galleriContent");
-    galleriContent.innerHTML = model.data.gallery.map(item => `
-        <div class="galleri-card">
-            <h3>${item.title}</h3>
-            
-            <img src="${item.src}" alt="${item.title}">
-            <p>${item.description}</p>
+    const galleriHTML = `
+    <div class='galleri-header'>
+        <button class='add-item-button' onclick="addGalleriItem()">+</button>
+    </div> 
+    ${model.data.gallery.map(item => `
+        <div class='galleri-card'>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <img src="${item.src}" alt="${item.title}" />
         </div>
-    `).join('');
+    `).join("")}
+    `;
+    galleriContent.innerHTML = galleriHTML;
+
+    
+
 }
 
