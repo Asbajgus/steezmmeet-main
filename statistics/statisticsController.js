@@ -14,19 +14,21 @@ function drawStatisticsChart() {
     const hoursData = stats.map(s => s.hoursInSlope);
 
     statisticsChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line', // <-- Endret her
         data: {
             labels: weekLabels,
             datasets: [
                 {
                     label: 'Dager i bakken',
                     data: daysData,
-                    backgroundColor: '#2196F3'
+                    borderColor: '#2196F3',
+                    fill: false
                 },
                 {
                     label: 'Timer i bakken',
                     data: hoursData,
-                    backgroundColor: '#FFC107'
+                    borderColor: '#FFC107',
+                    fill: false
                 }
             ]
         },

@@ -27,8 +27,8 @@ function renderDashboard() {
         <div class="card">
             <h3>Min statistikk</h3>
             <div class="stats">
-                <div>${model.data.users[0].statistics[0].daysInSlope} D</div>
-                <div>${model.data.users[0].statistics[0].hoursInSlope} T</div>
+                <div>${model.data.users[0].statistics[0].daysInSlope} Dager</div>
+                <div>${model.data.users[0].statistics[0].hoursInSlope} Timer</div>
             </div>
             <button onclick="renderStatisticsPage()">Se diagram</button>
         </div>
