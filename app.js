@@ -44,10 +44,6 @@ function navigateTo(page) {
             document.getElementById('adminContainer').style.display = 'block';
             renderAdminPage(); // Render admin panel dynamically
             break;
-        case 'admin':
-            document.getElementById('adminContainer').style.display = 'block';
-            showAllUsers();
-            break;
         default:
             console.error(`Unknown page: ${page}`);
     }
