@@ -313,26 +313,31 @@ h1{
     background: #cceeff;
 }
 
-.add-item {
-    text-align: right;
-    margin-right:  40px;
+#addGalleriItemForm input,
+#addGalleriItemForm textarea {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #87c9e8;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Noto Sans', Arial, sans-serif;
 }
-.add-item-button {
-    display: inline-block;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    background-color: #005f87;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
+
+#addGalleriItemForm button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
     cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
-.add-item-button:hover {
-    background-color: #007bb5;
+
+#addGalleriItemForm button:hover {
+    background: #cceeff;
 }
 
 .galleri-card {
@@ -343,6 +348,20 @@ h1{
     margin: 10px;
     text-align: center;
     background-color: #f9f9f9;
+    cursor: pointer; /* Make the card clickable */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galleri-card:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.galleri-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .delete-button {
@@ -367,4 +386,126 @@ h1{
 .delete-button:hover {
     background-color: darkred;
     transform: scale(1.1);
+}
+
+.galleri-category {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.manage-categories-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.manage-categories-button:hover {
+    background: #cceeff;
+}
+
+#categoryList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#categoryList li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#categoryList li button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#categoryList li button:hover {
+    background-color: #ff4949;
+}
+
+.manage-categories-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.manage-categories-button:hover {
+    background: #cceeff;
+}
+
+#manageCategoriesSection {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#categoryList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#categoryList li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#categoryList li button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#categoryList li button:hover {
+    background-color: #ff4949;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#categoryFilter {
+    padding: 10px;
+    border: 1px solid #87c9e8;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    cursor: pointer;
+    background-color: white;
+}
+
+#categoryFilter:hover {
+    background-color: #f0f8ff;
 }

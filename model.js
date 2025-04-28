@@ -1,7 +1,7 @@
 const model = {
   app: {
     currentPage: 'home',
-    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer', 'statisticsFullPage', 'adminContainer'],
+    pages: ['welcomeContainer', 'loginContainer', 'contentContainer', 'galleriContainer', 'chatContainer', 'galleriItemContainer', 'eventContainer', 'friendContainer', 'statisticsFullPage'],
 
   },
   inputs: {
@@ -237,13 +237,15 @@ const model = {
         id: 1,
         title: "Tricks I'm Trying",
         description: "A video of tricks I am practicing.",
+        category: "Triks",
         type: "video",
-        src: "videos/sample1.mp4",
+        src: "img/sample1.mp4",
       },
       {
         id: 2,
         title: "Future Tricks",
         description: "An image of tricks I plan to try.",
+        category: "Triks",
         type: "image",
         src: "img/sample2.jpg",
       },
@@ -251,10 +253,12 @@ const model = {
         id: 3,
         title: "Beautiful Slope",
         description: "A stunning view from the slopes.",
+        category: "Nature",
         type: "image",
         src: "img/sample3.jpg",
       }
     ],
+    categories: ["Nature", "Sports", "Travel", "Other"], // Default categories
     logo: {
       src: 'img/logo.png',
       alt: 'Steez Meet Logo'
