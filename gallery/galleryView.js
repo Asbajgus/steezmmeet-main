@@ -38,9 +38,7 @@ function renderGalleri() {
         ? model.data.gallery
         : model.data.gallery.filter(item => item.category === selectedCategory);
 
-    const groupedGallery = groupGalleryByCategory(filteredGallery);
-
-    galleriContent.innerHTML = `
+    let galleriHTML = `
         <div class="gallery-header">
             <button class="add-item-button" onclick="showAddGalleriItemForm()">+</button>
             <select id="categoryFilter" onchange="renderGalleri()">
@@ -50,19 +48,29 @@ function renderGalleri() {
                 `).join('')}
             </select>
         </div>
-        ${Object.keys(groupedGallery).map(category => `
-            <h2>${category}</h2>
-            <div class="galleri-category">
-                ${groupedGallery[category].map((item, index) => `
+    `;
+
+    model.data.categories.forEach(category => {
+        const categoryItems = filteredGallery.filter(item => item.category === category);
+        if (categoryItems.length > 0) {
+            galleriHTML += `
+                <h2>${category}</h2>
+                <div class="galleri-category">
+            `;
+            categoryItems.forEach((item, index) => {
+                galleriHTML += `
                     <div class="galleri-card" onclick="viewGalleriItem(model.data.gallery[${index}], ${index})">
                         <h3>${item.title}</h3>
                         <p>${item.description}</p>
                         <img src="${item.src}" alt="${item.title}">
                     </div>
-                `).join('')}
-            </div>
-        `).join('')}
-    `;
+                `;
+            });
+            galleriHTML += `</div>`;
+        }
+    });
+
+    galleriContent.innerHTML = galleriHTML;
 }
 
 function groupGalleryByCategory(gallery) {
