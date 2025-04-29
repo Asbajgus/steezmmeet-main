@@ -42,9 +42,9 @@ document.getElementById('loginForm').onsubmit = function (event) {
     document.getElementById('authButtonMobile').innerText = 'Log Out';
 };
 
-function viewGalleriItem(item) {
-    selectedGalleriItem = item;
-    const content = document.getElementById("galleriItemContent");
+function viewGalleryItem(item) {
+    selectedGalleryItem = item;
+    const content = document.getElementById("galleryItemContent");
 
     if (item.type === "image") {
         content.innerHTML = `
@@ -58,6 +58,6 @@ function viewGalleriItem(item) {
         `;
     }
 
-    document.getElementById("galleriContainer").style.display = "none";
-    document.getElementById("galleriItemContainer").style.display = "block";
+    document.getElementById("galleryContainer").style.display = "none";
+    document.getElementById("galleryItemContainer").style.display = "block";
 }

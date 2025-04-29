@@ -46,7 +46,7 @@ Users can move between **Dashboard**, **Gallery**, and **SteezChat** using the n
 
 - Navigation is handled via JavaScript functions like:
   - `navigateToDashboard()`
-  - `navigateToGalleri()`
+  - `navigateToGallery()`
   - `navigateToChat()`
 
 These control the visibility of each section by toggling the `style.display` of various HTML containers.
@@ -112,8 +112,8 @@ Your riding crew lives here. See your friends, maybe even plan a sesh together. 
 ## 🖼️ Gallery
 
 - View a collection of uploaded images and videos.
-- Upload new media using `addGalleriItem()` — reads the file and adds it to the model.
-- Delete unwanted items with `deleteGalleriItem()`.
+- Upload new media using `addGalleryItem()` — reads the file and adds it to the model.
+- Delete unwanted items with `deleteGalleryItem()`.
 
 ---
 

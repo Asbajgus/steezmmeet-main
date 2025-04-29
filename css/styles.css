@@ -193,26 +193,26 @@ h1{
 .friends button {
     margin: 5px;
 }
-.galleri {
+.gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
 }
-.galleri-card {
+.gallery-card {
     border: 1px solid #87c9e8;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-.galleri-card img {
+.gallery-card img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 10px;
 }
-.galleri-card button {
+.gallery-card button {
     margin-top: 10px;
     padding: 10px 15px;
     border: 1px solid #005f87;
@@ -222,10 +222,10 @@ h1{
     font-weight: bold;
     color: #005f87;
 }
-.galleri-card button:hover {
+.gallery-card button:hover {
     background: #cceeff;
 }
-.galleri-item {
+.gallery-item {
     position: relative;
     max-width: 600px;
     margin: 20px auto;
@@ -313,8 +313,8 @@ h1{
     background: #cceeff;
 }
 
-#addGalleriItemForm input,
-#addGalleriItemForm textarea {
+#addGalleryItemForm input,
+#addGalleryItemForm textarea {
     width: calc(100% - 16px);
     padding: 8px;
     margin-bottom: 10px;
@@ -324,7 +324,7 @@ h1{
     font-family: 'Noto Sans', Arial, sans-serif;
 }
 
-#addGalleriItemForm button {
+#addGalleryItemForm button {
     padding: 10px 15px;
     border: 1px solid #005f87;
     background: white;
@@ -336,11 +336,11 @@ h1{
     transition: background-color 0.3s ease;
 }
 
-#addGalleriItemForm button:hover {
+#addGalleryItemForm button:hover {
     background: #cceeff;
 }
 
-.galleri-card {
+.gallery-card {
     position: relative;
     padding: 10px;
     border: 1px solid #ccc;
@@ -352,12 +352,12 @@ h1{
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.galleri-card:hover {
+.gallery-card:hover {
     transform: scale(1.02); /* Slight zoom effect on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
-.galleri-card img {
+.gallery-card img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -388,7 +388,7 @@ h1{
     transform: scale(1.1);
 }
 
-.galleri-category {
+.gallery-category {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;

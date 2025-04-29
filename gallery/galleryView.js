@@ -1,12 +1,12 @@
 function viewImage(title) {
     alert(`Viewing image: ${title}`);
 }
-let selectedGalleriItem = null;
+let selectedGalleryItem = null;
 
-function viewGalleriItem(item, index) {
+function viewGalleryItem(item, index) {
     console.log("Viewing item:", item);
-    selectedGalleriItem = item;
-    const content = document.getElementById("galleriItemContent");
+    selectedGalleryItem = item;
+    const content = document.getElementById("galleryItemContent");
 
     if (item.type === "image") {
         console.log("Image path:", item.src); // Logowanie ścieżki do obrazu
@@ -17,31 +17,31 @@ function viewGalleriItem(item, index) {
         ${item.type === "video" ? `<video src="${item.src}" controls style="max-width: 100%;"></video>` : ""}
         <h2>${item.title}</h2>
         <p>${item.description}</p>
-        <button class="edit-button" onclick="showEditGalleriItemForm(${index})">Edit</button>
-        <button class="delete-button" onclick="deleteGalleriItem(${index})">Delete</button>
+        <button class="edit-button" onclick="showEditGalleryItemForm(${index})">Edit</button>
+        <button class="delete-button" onclick="deleteGalleryItem(${index})">Delete</button>
         <button onclick="backToDashboard()">Back to Dashboard</button>
-        <button onclick="backToGalleri()">Back to Galleri</button>
+        <button onclick="backToGallery()">Back to Gallery</button>
     `;
 
-    document.getElementById("galleriContainer").style.display = "none";
-    document.getElementById("galleriItemContainer").style.display = "block";
+    document.getElementById("galleryContainer").style.display = "none";
+    document.getElementById("galleryItemContainer").style.display = "block";
 }
 
 
 
 
 // knapp '+ ' !!!!!
-function renderGalleri() {
-    const galleriContent = document.getElementById("galleriContent");
+function renderGallery() {
+    const galleryContent = document.getElementById("galleryContent");
     const selectedCategory = document.getElementById("categoryFilter")?.value || "All";
     const filteredGallery = selectedCategory === "All"
         ? model.data.gallery
         : model.data.gallery.filter(item => item.category === selectedCategory);
 
-    let galleriHTML = `
+    let galleryHTML = `
         <div class="gallery-header">
-            <button class="add-item-button" onclick="showAddGalleriItemForm()">+</button>
-            <select id="categoryFilter" onchange="renderGalleri()">
+            <button class="add-item-button" onclick="showAddGalleryItemForm()">+</button>
+            <select id="categoryFilter" onchange="renderGallery()">
                 <option value="All">All Categories</option>
                 ${model.data.categories.map(category => `
                     <option value="${category}" ${selectedCategory === category ? "selected" : ""}>${category}</option>
@@ -53,24 +53,24 @@ function renderGalleri() {
     model.data.categories.forEach(category => {
         const categoryItems = filteredGallery.filter(item => item.category === category);
         if (categoryItems.length > 0) {
-            galleriHTML += `
+            galleryHTML += `
                 <h2>${category}</h2>
-                <div class="galleri-category">
+                <div class="gallery-category">
             `;
             categoryItems.forEach((item, index) => {
-                galleriHTML += `
-                    <div class="galleri-card" onclick="viewGalleriItem(model.data.gallery[${index}], ${index})">
+                galleryHTML += `
+                    <div class="gallery-card" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">
                         <h3>${item.title}</h3>
                         <p>${item.description}</p>
                         <img src="${item.src}" alt="${item.title}">
                     </div>
                 `;
             });
-            galleriHTML += `</div>`;
+            galleryHTML += `</div>`;
         }
     });
 
-    galleriContent.innerHTML = galleriHTML;
+    galleryContent.innerHTML = galleryHTML;
 }
 
 function groupGalleryByCategory(gallery) {
@@ -84,20 +84,20 @@ function groupGalleryByCategory(gallery) {
     }, {});
 }
 
-function showEditGalleriItemForm(index) {
+function showEditGalleryItemForm(index) {
     const item = model.data.gallery[index];
-    const galleriContent = document.getElementById("galleriItemContent");
-    galleriContent.innerHTML = `
+    const galleryContent = document.getElementById("galleryItemContent");
+    galleryContent.innerHTML = `
         <h2>Edit Gallery Item</h2>
-        <form id="editGalleriItemForm">
+        <form id="editGalleryItemForm">
             <p><strong>Title:</strong><br>
-                <input type="text" id="editGalleriTitle" value="${item.title}" required>
+                <input type="text" id="editGalleryTitle" value="${item.title}" required>
             </p>
             <p><strong>Description:</strong><br>
-                <textarea id="editGalleriDescription" rows="3" required>${item.description}</textarea>
+                <textarea id="editGalleryDescription" rows="3" required>${item.description}</textarea>
             </p>
             <p><strong>Category:</strong><br>
-                <select id="editGalleriCategory" required>
+                <select id="editGalleryCategory" required>
                     <option value="">-- Select Category --</option>
                     ${model.data.categories.map(category => `
                         <option value="${category}" ${item.category === category ? "selected" : ""}>${category}</option>
@@ -109,27 +109,27 @@ function showEditGalleriItemForm(index) {
                 <button type="button" onclick="addEditCategory()">Add Category</button>
             </p>
             <p><strong>File:</strong><br>
-                <input type="file" id="editGalleriFile" accept="image/*,video/*">
+                <input type="file" id="editGalleryFile" accept="image/*,video/*">
             </p>
-            <button type="button" onclick="editGalleriItem(${index})">Save Changes</button>
-            <button type="button" onclick="viewGalleriItem(model.data.gallery[${index}], ${index})">Cancel</button>
+            <button type="button" onclick="editGalleryItem(${index})">Save Changes</button>
+            <button type="button" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">Cancel</button>
         </form>
     `;
 }
 
-function showAddGalleriItemForm() {
-    const galleriContent = document.getElementById("galleriContent");
-    galleriContent.innerHTML = `
+function showAddGalleryItemForm() {
+    const galleryContent = document.getElementById("galleryContent");
+    galleryContent.innerHTML = `
         <h2>Add New Gallery Item</h2>
-        <form id="addGalleriItemForm">
+        <form id="addGalleryItemForm">
             <p><strong>Title:</strong><br>
-                <input type="text" id="newGalleriTitle" required>
+                <input type="text" id="newGalleryTitle" required>
             </p>
             <p><strong>Description:</strong><br>
-                <textarea id="newGalleriDescription" rows="3" required></textarea>
+                <textarea id="newGalleryDescription" rows="3" required></textarea>
             </p>
             <p><strong>Category:</strong><br>
-                <select id="newGalleriCategory" required>
+                <select id="newGalleryCategory" required>
                     <option value="">-- Select Category --</option>
                     ${model.data.categories.map(category => `
                         <option value="${category}">${category}</option>
@@ -137,10 +137,10 @@ function showAddGalleriItemForm() {
                 </select>
             </p>
             <p><strong>File:</strong><br>
-                <input type="file" id="newGalleriFile" accept="image/*,video/*" required>
+                <input type="file" id="newGalleryFile" accept="image/*,video/*" required>
             </p>
-            <button type="button" onclick="addGalleriItem()">Add Item</button>
-            <button type="button" onclick="renderGalleri()">Cancel</button>
+            <button type="button" onclick="addGalleryItem()">Add Item</button>
+            <button type="button" onclick="renderGallery()">Cancel</button>
         </form>
         <button class="manage-categories-button" onclick="toggleManageCategories()">Manage Categories</button>
         <div id="manageCategoriesSection" style="display: none;">
@@ -167,11 +167,11 @@ function toggleManageCategories() {
     manageCategoriesSection.style.display = manageCategoriesSection.style.display === "none" ? "block" : "none";
 }
 
-function addGalleriItem() {
-    const title = document.getElementById("newGalleriTitle").value.trim();
-    const description = document.getElementById("newGalleriDescription").value.trim();
-    const category = document.getElementById("newGalleriCategory").value;
-    const fileInput = document.getElementById("newGalleriFile");
+function addGalleryItem() {
+    const title = document.getElementById("newGalleryTitle").value.trim();
+    const description = document.getElementById("newGalleryDescription").value.trim();
+    const category = document.getElementById("newGalleryCategory").value;
+    const fileInput = document.getElementById("newGalleryFile");
     const file = fileInput.files[0];
 
     if (!file) {
@@ -195,28 +195,28 @@ function addGalleriItem() {
             src: e.target.result,
         };
         model.data.gallery.push(newItem); // Add the new item to the model
-        renderGalleri(); // Re-render the gallery
+        renderGallery(); // Re-render the gallery
     };
     reader.readAsDataURL(file); // Read the file as a data URL
 }
 
-function showEditGalleriItemForm(index) {
+function showEditGalleryItemForm(index) {
     const item = model.data.gallery[index];
-    const galleriContent = document.getElementById("galleriItemContent");
-    galleriContent.innerHTML = `
+    const galleryContent = document.getElementById("galleryItemContent");
+    galleryContent.innerHTML = `
         <h2>Edit Gallery Item</h2>
-        <form id="editGalleriItemForm">
+        <form id="editGalleryItemForm">
             <p><strong>Title:</strong><br>
-                <input type="text" id="editGalleriTitle" value="${item.title}" required>
+                <input type="text" id="editGalleryTitle" value="${item.title}" required>
             </p>
             <p><strong>Description:</strong><br>
-                <textarea id="editGalleriDescription" rows="3" required>${item.description}</textarea>
+                <textarea id="editGalleryDescription" rows="3" required>${item.description}</textarea>
             </p>
             <p><strong>File:</strong><br>
-                <input type="file" id="editGalleriFile" accept="image/*,video/*">
+                <input type="file" id="editGalleryFile" accept="image/*,video/*">
             </p>
-            <button type="button" onclick="editGalleriItem(${index})">Save Changes</button>
-            <button type="button" onclick="viewGalleriItem(model.data.gallery[${index}], ${index})">Cancel</button>
+            <button type="button" onclick="editGalleryItem(${index})">Save Changes</button>
+            <button type="button" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">Cancel</button>
         </form>
     `;
 }

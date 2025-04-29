@@ -20,9 +20,9 @@ function navigateTo(page) {
             document.getElementById('contentContainer').style.display = 'block';
             renderDashboard(); // Render dashboard dynamically
             break;
-        case 'galleri':
-            document.getElementById('galleriContainer').style.display = 'block';
-            renderGalleri(); // Render gallery dynamically
+        case 'gallery':
+            document.getElementById('galleryContainer').style.display = 'block';
+            renderGallery(); // Render gallery dynamically
             break;
         case 'chat':
             document.getElementById('chatContainer').style.display = 'block';
