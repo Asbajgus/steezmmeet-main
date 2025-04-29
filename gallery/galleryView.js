@@ -1,124 +1,146 @@
-function viewImage(title) {
-    alert(`Viewing image: ${title}`);
-}
 let selectedGalleryItem = null;
 
+// Function to display a single gallery item enlarged
 function viewGalleryItem(item, index) {
     console.log("Viewing item:", item);
-    selectedGalleryItem = item;
+    selectedGalleryItem = item; // Store the selected item
+    const galleryItemContainer = document.getElementById("galleryItemContainer");
     const content = document.getElementById("galleryItemContent");
 
-    if (item.type === "image") {
-        console.log("Image path:", item.src); // Logowanie ścieżki do obrazu
+    // Ensure containers exist before manipulating
+    if (!galleryItemContainer || !content) {
+        console.error("Gallery item containers not found!");
+        return;
     }
 
+    // Generate HTML based on item type
+    let itemHTML = '';
+    if (item.type === "image") {
+        console.log("Image path:", item.src); // Log image path for debugging
+        itemHTML = `<img src="${item.src}" alt="${item.title}" style="max-width: 100%;">`;
+    } else if (item.type === "video") {
+        itemHTML = `<video src="${item.src}" controls style="max-width: 100%;"></video>`;
+    }
+
+    // Set the inner HTML for the item content display area
     content.innerHTML = `
-        ${item.type === "image" ? `<img src="${item.src}" alt="${item.title}" style="max-width: 100%;">` : ""}
-        ${item.type === "video" ? `<video src="${item.src}" controls style="max-width: 100%;"></video>` : ""}
+        ${itemHTML}
         <h2>${item.title}</h2>
         <p>${item.description}</p>
+        <p><em>Category: ${item.category || 'Uncategorized'}</em></p>
         <button class="edit-button" onclick="showEditGalleryItemForm(${index})">Edit</button>
         <button class="delete-button" onclick="deleteGalleryItem(${index})">Delete</button>
-        <button onclick="backToDashboard()">Back to Dashboard</button>
         <button onclick="backToGallery()">Back to Gallery</button>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
     `;
 
+    // Switch view visibility
     document.getElementById("galleryContainer").style.display = "none";
-    document.getElementById("galleryItemContainer").style.display = "block";
+    galleryItemContainer.style.display = "block";
 }
 
-
-
-
-// knapp '+ ' !!!!!
+// Function to render the main gallery grid view
 function renderGallery() {
     const galleryContent = document.getElementById("galleryContent");
+    if (!galleryContent) {
+        console.error("Gallery content container not found!");
+        return;
+    }
+
+    // Get the selected category for filtering
     const selectedCategory = document.getElementById("categoryFilter")?.value || "All";
+
+    // Filter gallery items based on the selected category
     const filteredGallery = selectedCategory === "All"
         ? model.data.gallery
         : model.data.gallery.filter(item => item.category === selectedCategory);
 
+    // Start building the gallery HTML, including header with add button and category filter
     let galleryHTML = `
         <div class="gallery-header">
-            <button class="add-item-button" onclick="showAddGalleryItemForm()">+</button>
-            <select id="categoryFilter" onchange="renderGallery()">
-                <option value="All">All Categories</option>
-                ${model.data.categories.map(category => `
-                    <option value="${category}" ${selectedCategory === category ? "selected" : ""}>${category}</option>
-                `).join('')}
-            </select>
+            <div>
+                <label for="categoryFilter"> Filter by Category: </label>
+                <select id="categoryFilter" onchange="renderGallery()">
+                    <option value="All">All Categories</option>
+                    ${model.data.categories.map(category => `
+                        <option value="${category}" ${selectedCategory === category ? "selected" : ""}>${category}</option>
+                    `).join('')}
+                </select>
+                <button class="manage-categories-button" onclick="toggleManageCategories()">Manage Categories</button>
+            </div>
         </div>
-    `;
+         <div id="manageCategoriesSection" style="display: none; margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <h3>Manage Categories</h3>
+            <ul id="categoryList">
+                ${model.data.categories.map((category, index) => `
+                    <li>
+                        ${category}
+                        <button onclick="deleteCategory(${index})">Delete</button>
+                    </li>
+                `).join('')}
+            </ul>
+            <div>
+                <input type="text" id="newCategoryName" placeholder="Enter new category name">
+                <button onclick="addCategory()">Add Category</button>
+            </div>
+        </div>
+        <div class="gallery-grid">
+    `; // gallery-grid class added for potential styling
 
-    model.data.categories.forEach(category => {
-        const categoryItems = filteredGallery.filter(item => item.category === category);
-        if (categoryItems.length > 0) {
-            galleryHTML += `
-                <h2>${category}</h2>
-                <div class="gallery-category">
-            `;
-            categoryItems.forEach((item, index) => {
+    // Group filtered items by category for display
+    const groupedItems = groupGalleryByCategory(filteredGallery);
+
+    // Generate HTML for each category section and its items
+    for (const category in groupedItems) {
+        galleryHTML += `
+            <h2 class="gallery-category-title">${category}</h2>
+            <div class="gallery-category-items">
+        `;
+        groupedItems[category].forEach(item => {
+            // Find the original index of the item in the model.data.gallery array
+            const originalIndex = model.data.gallery.findIndex(galleryItem => galleryItem === item);
+            if (originalIndex !== -1) { // Ensure item was found
                 galleryHTML += `
-                    <div class="gallery-card" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">
+                    <div class="gallery-card" onclick='viewGalleryItem(${JSON.stringify(item).replace(/'/g, "&apos;")}, ${originalIndex})'>
+                         ${item.type === "image" ? `<img src="${item.src}" alt="${item.title}">` : ''}
+                         ${item.type === "video" ? `<div class="video-placeholder">[Video: ${item.title}]</div>` : ''}
                         <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                        <img src="${item.src}" alt="${item.title}">
+                        <p>${item.description.substring(0, 50)}...</p>
                     </div>
                 `;
-            });
-            galleryHTML += `</div>`;
-        }
-    });
+            }
+        });
+        galleryHTML += `</div>`; // Close gallery-category-items
+    }
 
+    galleryHTML += `</div>`; // Close gallery-grid
+
+    // Update the gallery container's HTML
     galleryContent.innerHTML = galleryHTML;
 }
 
+
+// Helper function to group gallery items by category
 function groupGalleryByCategory(gallery) {
     return gallery.reduce((groups, item) => {
-        const category = item.category || "Uncategorized";
+        const category = item.category || "Uncategorized"; // Default category if none exists
         if (!groups[category]) {
-            groups[category] = [];
+            groups[category] = []; // Initialize category array if it doesn't exist
         }
-        groups[category].push(item);
+        groups[category].push(item); // Add item to its category group
         return groups;
     }, {});
 }
 
-function showEditGalleryItemForm(index) {
-    const item = model.data.gallery[index];
-    const galleryContent = document.getElementById("galleryItemContent");
-    galleryContent.innerHTML = `
-        <h2>Edit Gallery Item</h2>
-        <form id="editGalleryItemForm">
-            <p><strong>Title:</strong><br>
-                <input type="text" id="editGalleryTitle" value="${item.title}" required>
-            </p>
-            <p><strong>Description:</strong><br>
-                <textarea id="editGalleryDescription" rows="3" required>${item.description}</textarea>
-            </p>
-            <p><strong>Category:</strong><br>
-                <select id="editGalleryCategory" required>
-                    <option value="">-- Select Category --</option>
-                    ${model.data.categories.map(category => `
-                        <option value="${category}" ${item.category === category ? "selected" : ""}>${category}</option>
-                    `).join('')}
-                </select>
-            </p>
-            <p><strong>Add New Category:</strong><br>
-                <input type="text" id="newEditCategoryName" placeholder="Enter new category name">
-                <button type="button" onclick="addEditCategory()">Add Category</button>
-            </p>
-            <p><strong>File:</strong><br>
-                <input type="file" id="editGalleryFile" accept="image/*,video/*">
-            </p>
-            <button type="button" onclick="editGalleryItem(${index})">Save Changes</button>
-            <button type="button" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">Cancel</button>
-        </form>
-    `;
-}
 
+// Function to display the form for adding a new gallery item
 function showAddGalleryItemForm() {
     const galleryContent = document.getElementById("galleryContent");
+    if (!galleryContent) {
+        console.error("Gallery content container not found!");
+        return;
+    }
+    // Replace gallery content with the add item form
     galleryContent.innerHTML = `
         <h2>Add New Gallery Item</h2>
         <form id="addGalleryItemForm">
@@ -134,6 +156,7 @@ function showAddGalleryItemForm() {
                     ${model.data.categories.map(category => `
                         <option value="${category}">${category}</option>
                     `).join('')}
+                     <option value="Uncategorized">Uncategorized</option>
                 </select>
             </p>
             <p><strong>File:</strong><br>
@@ -142,81 +165,14 @@ function showAddGalleryItemForm() {
             <button type="button" onclick="addGalleryItem()">Add Item</button>
             <button type="button" onclick="renderGallery()">Cancel</button>
         </form>
-        <button class="manage-categories-button" onclick="toggleManageCategories()">Manage Categories</button>
-        <div id="manageCategoriesSection" style="display: none;">
-            <h3>Manage Categories</h3>
-            <ul id="categoryList">
-                ${model.data.categories.map((category, index) => `
-                    <li>
-                        ${category}
-                        <button onclick="deleteCategory(${index})">Delete</button>
-                    </li>
-                `).join('')}
-            </ul>
-            <p><strong>Add New Category:</strong><br>
-                <input type="text" id="newCategoryName" placeholder="Enter category name">
-            </p>
-            <button onclick="addCategory()">Add Category</button>
-        </div>
+
     `;
 }
 
-
+// Function to toggle visibility of the category management section
 function toggleManageCategories() {
     const manageCategoriesSection = document.getElementById("manageCategoriesSection");
-    manageCategoriesSection.style.display = manageCategoriesSection.style.display === "none" ? "block" : "none";
-}
-
-function addGalleryItem() {
-    const title = document.getElementById("newGalleryTitle").value.trim();
-    const description = document.getElementById("newGalleryDescription").value.trim();
-    const category = document.getElementById("newGalleryCategory").value;
-    const fileInput = document.getElementById("newGalleryFile");
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert("Please select a file.");
-        return;
+    if (manageCategoriesSection) {
+        manageCategoriesSection.style.display = manageCategoriesSection.style.display === "none" ? "block" : "none";
     }
-
-    const fileType = file.type.startsWith("image/") ? "image" : file.type.startsWith("video/") ? "video" : null;
-    if (!fileType) {
-        alert("Only images and videos are allowed.");
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const newItem = {
-            title: title,
-            description: description,
-            category: category,
-            type: fileType,
-            src: e.target.result,
-        };
-        model.data.gallery.push(newItem); // Add the new item to the model
-        renderGallery(); // Re-render the gallery
-    };
-    reader.readAsDataURL(file); // Read the file as a data URL
-}
-
-function showEditGalleryItemForm(index) {
-    const item = model.data.gallery[index];
-    const galleryContent = document.getElementById("galleryItemContent");
-    galleryContent.innerHTML = `
-        <h2>Edit Gallery Item</h2>
-        <form id="editGalleryItemForm">
-            <p><strong>Title:</strong><br>
-                <input type="text" id="editGalleryTitle" value="${item.title}" required>
-            </p>
-            <p><strong>Description:</strong><br>
-                <textarea id="editGalleryDescription" rows="3" required>${item.description}</textarea>
-            </p>
-            <p><strong>File:</strong><br>
-                <input type="file" id="editGalleryFile" accept="image/*,video/*">
-            </p>
-            <button type="button" onclick="editGalleryItem(${index})">Save Changes</button>
-            <button type="button" onclick="viewGalleryItem(model.data.gallery[${index}], ${index})">Cancel</button>
-        </form>
-    `;
 }

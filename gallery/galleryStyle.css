@@ -1,0 +1,453 @@
+/* /gallery/galleryStyle.css - Unified styles for the SteezMeet Gallery */
+
+/* Main Gallery Container */
+#galleryContainer {
+    font-family: 'Noto Sans', Arial, sans-serif; /* Ensure consistent font */
+    padding: 20px;
+    background-color: #fff; /* Match general background */
+}
+
+/* Gallery Header Section (Filter, Add Button) */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.gallery-header h1 {
+    margin: 0;
+    color: #007bb5; /* Match primary heading color */
+    font-size: 24px;
+}
+
+.gallery-header label {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#categoryFilter {
+    padding: 8px 12px;
+    border: 1px solid #87c9e8; /* Match theme border */
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    cursor: pointer;
+    background-color: white;
+    margin-right: 10px; /* Space before buttons */
+    min-width: 150px; /* Give dropdown some width */
+}
+
+#categoryFilter:hover {
+    background-color: #f0f8ff; /* Light hover effect */
+}
+
+/* Add Item Button (+) */
+.add-item-button {
+    padding: 8px 15px; /* Slightly adjusted padding */
+    border: 1px solid #005f87;
+    background: #007bb5; /* Use primary color for emphasis */
+    color: white; /* White text */
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px; /* Larger font size for '+' */
+    line-height: 1; /* Ensure '+' is centered vertically */
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Space from filter/other buttons */
+}
+
+.add-item-button:hover {
+    background: #005f87; /* Darker shade on hover */
+}
+
+/* Manage Categories Button */
+.manage-categories-button {
+    padding: 8px 12px; /* Consistent padding */
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px; /* Match filter font size */
+    transition: background-color 0.3s ease;
+    margin-left: 5px; /* Space from add button */
+}
+
+.manage-categories-button:hover {
+    background: #cceeff; /* Theme hover */
+}
+
+/* Category Management Section */
+#manageCategoriesSection {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Light background */
+}
+
+#manageCategoriesSection h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #005f87; /* Theme secondary color */
+}
+
+#manageCategoriesSection input[type="text"] {
+    padding: 8px;
+    border: 1px solid #87c9e8;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#manageCategoriesSection button {
+    padding: 8px 12px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#manageCategoriesSection button:hover {
+     background: #cceeff;
+}
+
+/* Category List in Management Section */
+#categoryList {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+#categoryList li {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee; /* Separator for items */
+}
+
+#categoryList li button { /* Delete Category Button */
+    background-color: #ff6b6b; /* Reddish color for delete */
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#categoryList li button:hover {
+    background-color: #ff4949; /* Darker red on hover */
+}
+
+/* Gallery Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding-top: 10px; /* Space below header/management section */
+}
+
+/* Category Titles within the Grid */
+.gallery-category-title {
+    grid-column: 1 / -1; /* Span full width */
+    margin-bottom: 10px;
+    margin-top: 15px; /* Space above category title */
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    color: #005f87; /* Theme secondary color */
+    font-size: 18px;
+}
+
+/* Container for items within a category */
+.gallery-category-items {
+    /* This selector isn't strictly needed if items are direct children of gallery-grid,
+       but kept for clarity if structure changes. It inherits grid layout. */
+    display: contents; /* Allows items inside to adhere to the parent grid */
+}
+
+
+/* Individual Gallery Card Style */
+.gallery-card {
+    border: 1px solid #87c9e8; /* Theme border */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Space out content */
+}
+
+.gallery-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area, crop if needed */
+    border-radius: 5px; /* Slightly rounded corners */
+    margin-bottom: 10px;
+}
+
+.gallery-card .video-placeholder {
+    width: 100%;
+    height: 150px; /* Same fixed height */
+    background-color: #f0f0f0; /* Placeholder background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #555;
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.gallery-card h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #005f87; /* Theme secondary color */
+    overflow: hidden; /* Prevent long titles from breaking layout */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gallery-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 0; /* Remove default margin */
+    flex-grow: 1; /* Allow description to take available space */
+    overflow: hidden; /* Basic overflow handling */
+    display: -webkit-box;
+    /* -webkit-line-clamp: 3; Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+
+/* Enlarged Gallery Item View Container */
+#galleryItemContainer {
+     display: none; /* Hidden by default */
+     padding: 20px;
+}
+
+.gallery-item { /* Styles for the wrapper of the single item view */
+    max-width: 700px; /* Max width for the enlarged view */
+    margin: 20px auto; /* Center the item */
+    padding: 20px;
+    border: 1px solid #87c9e8;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background: white;
+    text-align: center; /* Center content like title/description */
+}
+
+#galleryItemContent img,
+#galleryItemContent video {
+    max-width: 100%; /* Ensure media fits container */
+    height: auto;
+    border-radius: 5px; /* Slight rounding */
+    margin-bottom: 15px; /* Space below media */
+}
+
+#galleryItemContent h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #007bb5; /* Primary color */
+}
+
+#galleryItemContent p {
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+#galleryItemContent p em { /* Style for category display */
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Buttons within the enlarged item view */
+.gallery-item button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 5px; /* Spacing between buttons */
+}
+
+.gallery-item button:hover {
+    background: #cceeff; /* Theme hover */
+}
+
+/* Specific button styles if needed
+.gallery-item .edit-button {
+    /* Add specific styles if different from default 
+} 
+*/
+
+.gallery-item .delete-button {
+    background-color: #ff6b6b; /* Red for delete */
+    border-color: #ff4949;
+    color: white;
+}
+
+.gallery-item .delete-button:hover {
+    background-color: #ff4949; /* Darker red */
+}
+
+
+/* Forms (Add and Edit) */
+#addGalleryItemForm,
+#editGalleryItemForm {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px; /* Limit form width */
+    margin: 20px auto; /* Center forms */
+}
+
+#addGalleryItemForm h2,
+#editGalleryItemForm h2 {
+     margin-top: 0;
+     margin-bottom: 20px;
+     text-align: center;
+     color: #007bb5;
+}
+
+
+#addGalleryItemForm p,
+#editGalleryItemForm p {
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+#addGalleryItemForm strong,
+#editGalleryItemForm strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#addGalleryItemForm input[type="text"],
+#addGalleryItemForm textarea,
+#addGalleryItemForm select,
+#addGalleryItemForm input[type="file"],
+#editGalleryItemForm input[type="text"],
+#editGalleryItemForm textarea,
+#editGalleryItemForm select,
+#editGalleryItemForm input[type="file"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    border: 1px solid #87c9e8; /* Theme border */
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+#addGalleryItemForm textarea,
+#editGalleryItemForm textarea {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 60px;
+}
+
+#addGalleryItemForm select,
+#editGalleryItemForm select {
+     appearance: none; /* Custom dropdown arrow potentially */
+     background-color: white;
+}
+
+#addGalleryItemForm input[type="file"],
+#editGalleryItemForm input[type="file"] {
+    background-color: white; /* Background for file input */
+    padding: 8px; /* Adjust padding */
+}
+
+/* Buttons within Forms */
+#addGalleryItemForm button,
+#editGalleryItemForm button {
+    padding: 10px 15px;
+    border: 1px solid #005f87;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #005f87;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Space buttons */
+}
+
+#addGalleryItemForm button:hover,
+#editGalleryItemForm button:hover {
+    background: #cceeff; /* Theme hover */
+}
+
+/* Specific 'Add Category' button in edit form */
+#editGalleryItemForm p button {
+    margin-left: 10px; /* Space after input field */
+    vertical-align: middle; /* Align with input */
+    padding: 8px 10px; /* Slightly smaller padding */
+    font-size: 12px;
+}
+
+/* 'Save Changes' or 'Add Item' button emphasis */
+#addGalleryItemForm button[type="button"]:first-of-type, /* Targets 'Add Item' */
+#editGalleryItemForm button[type="button"]:first-of-type { /* Targets 'Save Changes' */
+    background-color: #28a745; /* Green for primary action */
+    border-color: #218838;
+    color: white;
+}
+#addGalleryItemForm button[type="button"]:first-of-type:hover,
+#editGalleryItemForm button[type="button"]:first-of-type:hover {
+    background-color: #218838;
+}
+
+/* Cancel button styling */
+#addGalleryItemForm button[type="button"]:last-of-type, /* Targets 'Cancel' */
+#editGalleryItemForm button[type="button"]:last-of-type { /* Targets 'Cancel' */
+     background-color: #6c757d; /* Grey for cancel */
+     border-color: #5a6268;
+     color: white;
+}
+#addGalleryItemForm button[type="button"]:last-of-type:hover,
+#editGalleryItemForm button[type="button"]:last-of-type:hover {
+    background-color: #5a6268;
+}
+
+/* Current file display in edit form */
+#editGalleryItemForm p img {
+    max-height: 40px;
+    vertical-align: middle;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
