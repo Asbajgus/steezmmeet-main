@@ -78,25 +78,35 @@ function showEventPage(index) {
 }
 
 function editEvent(index) {
-    const e = model.inputs.EventPage = { ...eventArray[index] }; // Use model.inputs.EventPage
+    const original = eventArray[index];
+
+    // Split weather-feltet hvis det finnes (f.eks. "Cold (below -5°C) Fresh Snow")
+    const [weatherTemperature = '', weatherType = ''] = original.weather?.split(/ (.+)/) || [];
+
+    const e = model.inputs.EventPage = {
+        ...original,
+        weatherTemperature: weatherTemperature.trim(),
+        weatherType: weatherType.trim()
+    };
+
     document.getElementById('eventContainer').innerHTML = /*HTML*/ `
-    <h2>Edit Event</h2>
-    ${eventFormFields(e, 'edit', index)}
-    <h3>Attendees</h3>
-    <ul id="attendeeList${index}">${e.attendees.map(attendeeId => {
-        const attendee = model.data.users.find(user => user.id === attendeeId);
-        return `<li>${attendee ? attendee.name : 'Unknown User'} <button onclick="deleteAttendee(${index}, ${attendeeId})">Delete</button></li>`;
-    }).join('')}</ul>
-    <label for="newAttendee${index}">Add Attendee:</label>
-    <select id="newAttendee${index}" onchange="addAttendeeFromDropdown(${index})">
-        <option value="">-- Select Attendee --</option>
-        ${model.data.users
-            .filter(user => !e.attendees.includes(user.id))
-            .map(user => `<option value="${user.id}">${user.name}</option>`)
-            .join('')}
-    </select><br><br>
-    <button onclick="updateEvent(${index})">Save</button>
-    <button onclick="showAllEvents()">Cancel</button>
+        <h2>Edit Event</h2>
+        ${eventFormFields(e, 'edit', index)}
+        <h3>Attendees</h3>
+        <ul id="attendeeList${index}">${e.attendees.map(attendeeId => {
+            const attendee = model.data.users.find(user => user.id === attendeeId);
+            return `<li>${attendee ? attendee.name : 'Unknown User'} <button onclick="deleteAttendee(${index}, ${attendeeId})">Delete</button></li>`;
+        }).join('')}</ul>
+        <label for="newAttendee${index}">Add Attendee:</label>
+        <select id="newAttendee${index}" onchange="addAttendeeFromDropdown(${index})">
+            <option value="">-- Select Attendee --</option>
+            ${model.data.users
+                .filter(user => !e.attendees.includes(user.id))
+                .map(user => `<option value="${user.id}">${user.name}</option>`)
+                .join('')}
+        </select><br><br>
+        <button onclick="updateEvent(${index})">Save</button>
+        <button onclick="showAllEvents()">Cancel</button>
     `;
 }
 
@@ -220,7 +230,9 @@ function renderNewAttendeeList() {
 }
 
 function updateEvent(index) {
-    eventArray[index] = { ...model.inputs.EventPage };
+    const e = model.inputs.EventPage;
+    e.weather = `${e.weatherTemperature || ''} ${e.weatherType || ''}`.trim();
+    eventArray[index] = { ...e };
     showAllEvents();
 }
 
