@@ -32,6 +32,8 @@ const model = {
       slope: '',
       extraInfo: '',
       attendees: [],
+      weatherTemperature: "",
+      weatherType: ""
     },
     galleryPage: {
       title: '',

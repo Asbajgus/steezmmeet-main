@@ -17,6 +17,7 @@ function showAllEvents() {
             <th>Location</th>
             <th>Date</th>
             <th>Slope</th>
+            <th>Weather</th>
             <th>Description</th>
             <th>Attendees</th>
             <th>Actions</th>
@@ -37,6 +38,7 @@ function showAllEvents() {
             <td>${truncatedPlace}</td>
             <td>${e.date}</td>
             <td>${e.slope}</td>
+            <td>${e.weather ? e.weather : 'No weather info'}</td>
             <td>${truncatedDescription}</td>
             <td>${e.attendees.length}</td>
             <td>
@@ -55,6 +57,7 @@ function showEventPage(index) {
     <p><strong>Location:</strong> ${e.place.join(', ')}</p>
     <p><strong>Date:</strong> ${e.date}</p>
     <p><strong>Slope:</strong> ${e.slope}</p>
+    <p><strong>Weather:</strong> ${e.weather ? e.weather : 'No weather info'}</p>
     <p><strong>Description:</strong> ${e.extraInfo}</p>
     <h3>Attendees</h3>
     <ul id="attendeeList${index}">${e.attendees.map(attendeeId => {
@@ -98,15 +101,20 @@ function editEvent(index) {
 }
 
 function createNewEvent() {
+    const weather = `${model.inputs.EventPage.weatherTemperature || ''} ${model.inputs.EventPage.weatherType || ''}`.trim();
+    
     model.inputs.EventPage = { // Use model.inputs.EventPage
         title: "",
         date: "",
         place: [""],
         slope: "",
         extraInfo: "",
-        attendees: []
+        attendees: [],
+        weather: weather,
     };
     window.newAttendees = [];
+
+    
 
     document.getElementById('eventContainer').innerHTML = /*HTML*/ `
     <h2>Create New Event</h2>
@@ -141,6 +149,27 @@ function eventFormFields(e, mode, index = null) {
             `).join('')}
         </select>
     </p>
+    <p>Temperature:<br>
+    <select id="${mode}WeatherTemperature" onchange="model.inputs.EventPage.weatherTemperature=this.value">
+        <option value="">Select temperature</option>
+        <option value="Cold (below -5°C)">Cold (below -5°C)</option>
+        <option value="Chilly (-5°C to 0°C)">Chilly (-5°C to 0°C)</option>
+        <option value="Mild (0°C to 5°C)">Mild (0°C to 5°C)</option>
+        <option value="Warm (above 5°C)">Warm (above 5°C)</option>
+    </select>
+</p>
+
+<p>Weather Type:<br>
+    <select id="${mode}WeatherType" onchange="model.inputs.EventPage.weatherType=this.value">
+        <option value="">Select weather type</option>
+        <option value="Fresh Snow">Fresh Snow</option>
+        <option value="Packed Snow">Packed Snow</option>
+        <option value="Slippery Ice">Slippery Ice</option>
+        <option value="Sunny & Clear">Sunny & Clear</option>
+        <option value="Overcast">Overcast</option>
+        <option value="Windy">Windy</option>
+    </select>
+</p>
     <p>Description:<br> <textarea id="${mode}ExtraInfo" rows="5" cols="160" oninput="model.inputs.EventPage.extraInfo=this.value">${e.extraInfo}</textarea></p>
     `;
 }
@@ -196,11 +225,15 @@ function updateEvent(index) {
 }
 
 function saveNewEvent() {
+    const weather = `${model.inputs.EventPage.weatherTemperature || ''} ${model.inputs.EventPage.weatherType || ''}`.trim();
+    
     const newEvent = {
         id: eventArray.length > 0 ? Math.max(...eventArray.map(e => e.id)) + 1 : 1,
         creatorId: 1, // Or get the current user's ID
-        ...model.inputs.EventPage
+        ...model.inputs.EventPage,
+        weather: weather, // Sett vær som en sammenflettet streng
     };
+
     eventArray.push(newEvent);
     showAllEvents();
 }

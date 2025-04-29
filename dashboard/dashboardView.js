@@ -10,7 +10,7 @@ function renderDashboard() {
             <h3>Mine events</h3>
             <ul>
                 ${model.data.events.map(event => `
-                    <li>${event.title} - ${event.date} (${event.place[0]})</li>
+                    <li>${event.title} - ${event.date} (${event.place[0]}${event.weather ? ' - ' + event.weather : ''})</li>
                 `).join('')}
             </ul>
             <button onclick="navigateTo('newEvent')">Ny Event</button>
