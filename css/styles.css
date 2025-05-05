@@ -228,144 +228,6 @@ h1{
 .edit-button:hover {
     background: #cceeff;
 }
-.chat-box {
-    border: 1px solid #87c9e8;
-    border-radius: 10px;
-    padding: 15px;
-    height: 300px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    background: #f9f9f9;
-}
-.chat-message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background: #e6f7ff;
-    max-width: 80%;
-}
-.chat-message.user {
-    background: #d9fdd3;
-    align-self: flex-end;
-}
-.chat-input {
-    display: flex;
-    gap: 10px;
-}
-.chat-input input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #87c9e8;
-    border-radius: 5px;
-}
-.chat-input button {
-    padding: 10px 15px;
-    border: 1px solid #005f87;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #005f87;
-}
-.chat-input button:hover {
-    background: #cceeff;
-}
-
-
-
-.manage-categories-button {
-    margin-left: 10px;
-    padding: 10px 15px;
-    border: 1px solid #005f87;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #005f87;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.manage-categories-button:hover {
-    background: #cceeff;
-}
-
-#categoryList {
-    list-style-type: none;
-    padding: 0;
-}
-
-#categoryList li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#categoryList li button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-#categoryList li button:hover {
-    background-color: #ff4949;
-}
-
-.manage-categories-button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    border: 1px solid #005f87;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #005f87;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.manage-categories-button:hover {
-    background: #cceeff;
-}
-
-#manageCategoriesSection {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-#categoryList {
-    list-style-type: none;
-    padding: 0;
-}
-
-#categoryList li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#categoryList li button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-#categoryList li button:hover {
-    background-color: #ff4949;
-}
 
 .gallery-header {
     display: flex;
@@ -374,81 +236,22 @@ h1{
     margin-bottom: 20px;
 }
 
-#categoryFilter {
-    padding: 10px;
-    border: 1px solid #87c9e8;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: 'Noto Sans', Arial, sans-serif;
-    cursor: pointer;
-    background-color: white;
-}
-
-#categoryFilter:hover {
-    background-color: #f0f8ff;
-}
-
-#loginContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    border: 1px solid #87c9e8;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#loginContainer h2 {
-    color: #005f87;
-    margin-bottom: 20px;
-}
-
-#loginContainer input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #87c9e8;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-#loginContainer button {
-    padding: 10px 15px;
-    border: 1px solid #005f87;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #005f87;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-#loginContainer button:hover {
-    background: #cceeff;
-}
 
 #contentContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Pełna wysokość widoku */
+    height: 100vh;
+    text-align: center;
+}
+#contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     text-align: center;
 }
 
-.dashboard-title {
-    font-size: 32px;
-    color: #005f87;
-    margin-bottom: 10px;
-}
 
-.dashboard-message {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 20px;
-}

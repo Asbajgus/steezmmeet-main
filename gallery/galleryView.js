@@ -68,8 +68,9 @@ function renderGallery() {
                 </select>
                 <button class="manage-categories-button" onclick="toggleManageCategories()">Manage Categories</button>
             </div>
+            <button class="add-item-button" onclick="showAddGalleryItemForm()">+</button>
         </div>
-         <div id="manageCategoriesSection" style="display: none; margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        <div id="manageCategoriesSection" style="display: none; margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
             <h3>Manage Categories</h3>
             <ul id="categoryList">
                 ${model.data.categories.map((category, index) => `
@@ -135,6 +136,7 @@ function groupGalleryByCategory(gallery) {
 
 // Function to display the form for adding a new gallery item
 function showAddGalleryItemForm() {
+    console.log("showAddGalleryItemForm called"); // Dodaj log
     const galleryContent = document.getElementById("galleryContent");
     if (!galleryContent) {
         console.error("Gallery content container not found!");

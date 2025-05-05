@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="friends/friendStyle.css">
     <link rel="stylesheet" href="admin/adminStyle.css">
     <link rel="stylesheet" href="gallery/galleryStyle.css">
+    <link rel="stylesheet" href="login/loginStyle.css"> 
     <script src="./model.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -17,7 +18,7 @@
     <div class="header">
         <div class="logo">
             <img src="img/steezmeetLogo.png" alt="Steez Meet Logo">
-            <p>"Shred it, steeze it, send it!"</p>
+            <p>"Shred, steeze, send it!"</p>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
@@ -74,6 +75,7 @@
         <div id="galleryContent">
             <!-- Gallery items will be dynamically rendered here -->
         </div>
+        <button class="add-item-button" onclick="showAddGalleryItemForm()">+</button>
     </div>
 
     <div id="galleryItemContainer" style="display: none;">
@@ -81,8 +83,6 @@
             <div id="galleryItemContent">
                 <!-- Content (image or video) will be dynamically rendered here -->
             </div>
-            <!-- <button class="edit-button" onclick="editGalleryItem()">Edit</button>
-            <button onclick="backToDashboard()">Back to Dashboard</button> -->
         </div>
     </div>
 
@@ -99,7 +99,7 @@
     </div>
 
     <div id="statisticsFullPage" style="display: none;">
-        <h1>statistics</h1>
+        <h1>Statistikk</h1>
         <canvas id="statisticsFullChart"></canvas>
         <button onclick="backToDashboard()">Back to Dashboard</button>
     </div>

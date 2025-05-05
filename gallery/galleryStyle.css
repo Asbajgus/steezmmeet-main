@@ -47,6 +47,7 @@
 
 /* Add Item Button (+) */
 .add-item-button {
+    /* display: block; Upewnij się, że przycisk jest widoczny */
     padding: 8px 15px; /* Slightly adjusted padding */
     border: 1px solid #005f87;
     background: #007bb5; /* Use primary color for emphasis */

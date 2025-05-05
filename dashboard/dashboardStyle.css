@@ -1,0 +1,12 @@
+
+.dashboard-title {
+    font-size: 32px;
+    color: #005f87;
+    margin-bottom: 10px;
+}
+
+.dashboard-message {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
