@@ -194,7 +194,7 @@ h1{
     margin: 5px;
 }
 
-
+#delete-button {
     display: flex;
     align-items: center;
     justify-content: center;
