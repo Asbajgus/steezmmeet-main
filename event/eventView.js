@@ -171,13 +171,14 @@ function eventFormFields(e, mode, index = null) {
 
 <p>Weather Type:<br>
     <select id="${mode}WeatherType" onchange="model.inputs.EventPage.weatherType=this.value">
-        <option value="">Select weather type</option>
-        <option value="Fresh Snow">Fresh Snow</option>
-        <option value="Packed Snow">Packed Snow</option>
-        <option value="Slippery Ice">Slippery Ice</option>
-        <option value="Sunny & Clear">Sunny & Clear</option>
+        <option value="">Select visibility condition</option>
+        <option value="Clear Visibility">Clear Visibility</option>
+        <option value="Partly Cloudy">Partly Cloudy</option>
         <option value="Overcast">Overcast</option>
-        <option value="Windy">Windy</option>
+        <option value="Foggy">Foggy</option>
+        <option value="Heavy Snowfall">Heavy Snowfall</option>
+        <option value="Blizzard / Whiteout">Blizzard / Whiteout</option>
+        <option value="Low Sun / Glare">Low Sun / Glare</option>
     </select>
 </p>
     <p>Description:<br> <textarea id="${mode}ExtraInfo" rows="5" cols="160" oninput="model.inputs.EventPage.extraInfo=this.value">${e.extraInfo}</textarea></p>
