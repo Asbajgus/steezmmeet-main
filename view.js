@@ -29,8 +29,8 @@ document.getElementById('loginForm').onsubmit = function (event) {
 
     // Display a personalized welcome message
     document.getElementById('contentContainer').innerHTML = `
-        <h1>Welcome, ${username}!</h1>
-        <p>This is your dashboard. Enjoy your stay!</p>
+        <h1 class="dashboard-title">Welcome, ${username}!</h1>
+        <p class="dashboard-message">This is your dashboard. Enjoy your stay!</p>
     `;
 
     // Hide the login form and show the dashboard
