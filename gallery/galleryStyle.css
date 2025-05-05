@@ -308,12 +308,6 @@
     background: #cceeff; /* Theme hover */
 }
 
-/* Specific button styles if needed
-.gallery-item .edit-button {
-    /* Add specific styles if different from default 
-} 
-*/
-
 .gallery-item .delete-button {
     background-color: #ff6b6b; /* Red for delete */
     border-color: #ff4949;
