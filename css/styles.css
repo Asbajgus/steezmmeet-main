@@ -211,9 +211,7 @@ h1{
     cursor: pointer;
 }
 
-.delete-button:hover {
-    background: red !important;
-}
+
 
 .edit-button {
     margin-top: 20px;
