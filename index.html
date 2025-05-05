@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="admin/adminStyle.css">
     <link rel="stylesheet" href="gallery/galleryStyle.css">
     <link rel="stylesheet" href="login/loginStyle.css"> 
-    <link rel="stylesheet" href="chat/chatStyle.css">
+    <!-- <link rel="stylesheet" href="chat/chatStyle.css"> -->
     <script src="./model.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -29,7 +29,7 @@
         <div class="nav-buttons center">
             <button onclick="navigateTo('dashboard')">Dashboard</button>
             <button onclick="navigateTo('gallery')">Gallery</button>
-            <button onclick="navigateTo('chat')">Chat</button>
+            <!-- <button onclick="navigateTo('chat')">Chat</button> -->
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
             <button onclick="navigateTo('admin')">Edit</button>
@@ -41,7 +41,7 @@
         <div class="nav-buttons mobile" id="mobileMenu">
             <button onclick="navigateTo('dashboard')">Dashboard</button>
             <button onclick="navigateTo('gallery')">Gallery</button>
-            <button onclick="navigateTo('chat')">Chat</button>
+            <!-- <button onclick="navigateTo('chat')">Chat</button> -->
             <button onclick="navigateTo('event')">Event</button>
             <button onclick="navigateTo('friends')">Friends</button>
             <button onclick="navigateTo('admin')">Admin</button>
@@ -86,17 +86,17 @@
         </div>
     </div>
 
-    <div id="chatContainer" style="display: none;">
+    <!-- <div id="chatContainer" style="display: none;">
         <h1>Chat</h1>
         <div id="chatBox">
-            <!-- Chat messages will be dynamically rendered here -->
+            Chat messages will be dynamically rendered here 
         </div>
         <div class="chat-input">
             <input type="text" id="chatMessageInput" placeholder="Type your message..." />
             <button onclick="sendMessage()">Send</button>
         </div>
         <button onclick="backToDashboard()">Back to Dashboard</button>
-    </div>
+    </div> -->
 
     <div id="statisticsFullPage" style="display: none;">
         <h1>Statistikk</h1>
@@ -128,8 +128,8 @@
     <script src="gallery/galleryView.js"></script>
     <script src="event/eventView.js"></script>
     <script src="gallery/galleryViewController.js"></script>
-    <script src="chat/chatView.js"></script>
-    <script src="chat/chatController.js"></script>
+    <!-- <script src="chat/chatView.js"></script>
+    <script src="chat/chatController.js"></script> -->
     <script src="statistics/statisticsView.js"></script>
     <script src="statistics/statisticsController.js"></script>
     <script src="friends/friendView.js"></script>
