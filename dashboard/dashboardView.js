@@ -7,13 +7,13 @@ function renderDashboard() {
 
     dashboardContent.innerHTML = `
         <div class="card">
-            <h3>Mine events</h3>
+            <h3>My events</h3>
             <ul>
                 ${model.data.events.map(event => `
                     <li>${event.title} - ${event.date} (${event.place[0]}${event.weather ? ' - ' + event.weather : ''})</li>
                 `).join('')}
             </ul>
-            <button onclick="navigateTo('newEvent')">Ny Event</button>
+            <button onclick="navigateTo('newEvent')">New Event</button>
         </div>
         <div class="card">
             <h3>List of events</h3>
@@ -27,8 +27,8 @@ function renderDashboard() {
         <div class="card">
             <h3>Statistics</h3>
             <div class="stats">
-                <div>${model.data.users[0].statistics[0].daysInSlope} Dager</div>
-                <div>${model.data.users[0].statistics[0].hoursInSlope} Timer</div>
+                <div>${model.data.users[0].statistics[0].daysInSlope} Days</div>
+                <div>${model.data.users[0].statistics[0].hoursInSlope} Hours</div>
             </div>
             <button onclick="renderStatisticsPage()">Diagram</button>
         </div>
